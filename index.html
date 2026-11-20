@@ -842,21 +842,6 @@ async function pageHome(app){
     </div>
   </section>
 
-  <section style="background:var(--cream-deep);">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">L'équipe</div>
-        <h2>Les personnes qui bâtissent M-Tech</h2>
-      </div>
-      <div class="team-grid reveal" id="homeTeamGrid">
-        ${team.length ? team.map(teamCardHTML).join('') : emptyStateHTML("Aucun membre publié pour le moment.")}
-      </div>
-      <div style="text-align:center; margin-top:40px;">
-        <a href="#/team" class="btn btn-outline">Voir toute l'équipe →</a>
-      </div>
-    </div>
-  </section>
-
   <section>
     <div class="wrap">
       <div class="section-head reveal">
@@ -884,6 +869,21 @@ async function pageHome(app){
       <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
         <a href="#/service-request" class="btn btn-gold">Faire une demande de service</a>
         <a href="#/contact" class="btn btn-outline-light">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--cream-deep);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">L'équipe</div>
+        <h2>Les personnes qui bâtissent M-Tech</h2>
+      </div>
+      <div class="team-grid reveal" id="homeTeamGrid">
+        ${team.length ? team.map(teamCardHTML).join('') : emptyStateHTML("Aucun membre publié pour le moment.")}
+      </div>
+      <div style="text-align:center; margin-top:40px;">
+        <a href="#/team" class="btn btn-outline">Voir toute l'équipe →</a>
       </div>
     </div>
   </section>
