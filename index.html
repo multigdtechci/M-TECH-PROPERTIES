@@ -801,7 +801,7 @@ document.addEventListener('click', e=>{ if(e.target.id === 'lightbox') $('#light
 async function pageHome(app){
   setSEO("Accueil", "Construction, lotissement, terrains, immobilier, consultation juridique et import-export en Côte d'Ivoire — M-Tech Properties Ltd.");
   const [team, albums] = await Promise.all([
-    sbSelect('team', {order:{col:'name'}}).then(r=>r.slice(0,4)),
+    sbSelect('team', {order:{col:'name'}}).then(r=>sortTeamByRank(r).slice(0,4)),
     sbSelect('albums', {order:{col:'created_at'}}).then(r=>r.slice(0,6)),
   ]);
 
@@ -901,6 +901,18 @@ async function pageHome(app){
     slides[idx].classList.add('active');
   }, 5000);
 }
+/* Classement hiérarchique : du plus haut grade au plus bas (niveau dans l'organigramme,
+   puis taille de l'équipe dirigée, puis ordre alphabétique) */
+function sortTeamByRank(list){
+  const byId = Object.fromEntries(list.map(m=>[m.id, m]));
+  const reports = {};
+  list.forEach(m=>{ if(m.superieur_id && byId[m.superieur_id]) reports[m.superieur_id] = (reports[m.superieur_id]||0) + 1; });
+  const depth = m => { let d = 0, cur = m, guard = 0;
+    while(cur.superieur_id && byId[cur.superieur_id] && guard++ < 50){ d++; cur = byId[cur.superieur_id]; }
+    return d; };
+  return [...list].sort((a,b)=> depth(a)-depth(b) || (reports[b.id]||0)-(reports[a.id]||0) || (a.name||'').localeCompare(b.name||'', 'fr'));
+}
+
 function teamCardHTML(m){
   return `<div class="team-card reveal in">
     <div class="team-photo" style="background-image:url('${esc(m.photo_url || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop')}')"></div>
@@ -1164,7 +1176,7 @@ function albumCardHTML(a){
    ========================================================================= */
 async function pageTeam(app){
   setSEO("Notre équipe", "Rencontrez l'équipe M-Tech Properties Ltd.");
-  const team = await sbSelect('team', {order:{col:'name'}});
+  const team = sortTeamByRank(await sbSelect('team', {order:{col:'name'}}));
   const depts = ['all', ...new Set(team.map(m=>m.department).filter(Boolean))];
   app.innerHTML = `
   ${pageBannerHTML("Notre équipe", "Des professionnels engagés, du chantier au conseil juridique.")}
@@ -1555,7 +1567,7 @@ function orgBranchHTML(m, ctx, depth){
 }
 async function pageOrganisation(app){
   setSEO("Notre organisation", "L'organigramme de M-Tech Properties Ltd : direction, opérations et départements.");
-  const members = await sbSelect('team', {order:{col:'name'}});
+  const members = sortTeamByRank(await sbSelect('team', {order:{col:'name'}}));
   const byId = Object.fromEntries(members.map(m=>[m.id, m]));
   const ctx = { children:{}, byId };
   const roots = [];
@@ -1859,7 +1871,7 @@ async function adminOverview(main){
 
 /* ---------------- Gestion de l'équipe ---------------- */
 async function adminTeam(main){
-  const team = await sbSelect('team', {order:{col:'name'}});
+  const team = sortTeamByRank(await sbSelect('team', {order:{col:'name'}}));
   window._teamCache = team;
   main.innerHTML = `
     <div class="admin-toolbar">
