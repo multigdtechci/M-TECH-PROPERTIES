@@ -231,7 +231,7 @@ section{padding:96px 0; position:relative;}
 
 /* footer */
 footer.site{background:var(--green-ink); color:var(--cream);}
-.footer-top{padding:70px 0 50px; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px;}
+.footer-top{padding:70px 28px 50px; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px;}
 @media(max-width:820px){.footer-top{grid-template-columns:1fr 1fr; row-gap:36px;}}
 .footer-top h5{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; color:var(--gold); margin-bottom:16px;}
 .footer-top a,.footer-top p{color:rgba(250,246,238,.72); font-size:.9rem;}
@@ -294,7 +294,7 @@ footer.site{background:var(--green-ink); color:var(--cream);}
 @keyframes spin{to{transform:rotate(360deg);}}
 .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
 .reveal.in{opacity:1; transform:translateY(0);}
-.page-banner{background:var(--green-ink); color:var(--white); padding:150px 0 70px; position:relative; overflow:hidden;}
+.page-banner{background:var(--green-ink); color:var(--white); padding:100px 0 64px; position:relative; overflow:hidden;}
 .page-banner .wrap{position:relative; z-index:2;}
 .page-banner p{color:rgba(250,246,238,.75); max-width:560px; margin-top:16px;}
 .breadcrumb{font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; color:var(--gold-light); margin-bottom:14px;}
@@ -310,6 +310,93 @@ footer.site{background:var(--green-ink); color:var(--cream);}
 .contact-info-list{list-style:none; margin-top:22px;}
 .contact-info-list li{display:flex; gap:14px; margin-bottom:18px; font-size:.92rem;}
 .contact-info-list .ic{width:34px; height:34px; border-radius:50%; background:var(--cream-deep); color:var(--green); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+
+/* ---------- Catalogues terrains / immobilier ---------- */
+.catalog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+@media(max-width:900px){.catalog-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.catalog-grid{grid-template-columns:1fr;}}
+.catalog-card{background:var(--white); border:1px solid var(--line); display:block; transition:transform .3s ease, box-shadow .3s ease;}
+.catalog-card:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
+.catalog-card .cover{aspect-ratio:4/3; background:var(--cream-deep) center/cover no-repeat; position:relative;}
+.catalog-card .body{padding:18px 20px;}
+.catalog-card h3{font-size:1.1rem; margin:8px 0 12px;}
+.catalog-card .meta{display:flex; justify-content:space-between; gap:10px; font-size:.85rem; color:#5d6c57;}
+.catalog-card .meta b{color:var(--green-dark);}
+.status-badge{position:absolute; top:12px; left:12px; padding:5px 12px; border-radius:999px; font-family:var(--font-mono); font-size:.66rem; text-transform:uppercase; letter-spacing:.05em; display:inline-block;}
+.status-badge.ok{background:var(--green); color:#fff;}
+.status-badge.warn{background:var(--gold); color:var(--green-ink);}
+.status-badge.info{background:#2f6f8f; color:#fff;}
+.status-badge.off{background:#6b6b6b; color:#fff;}
+.mode-tag{position:absolute; top:12px; right:12px; background:rgba(28,42,23,.8); color:#fff; padding:5px 12px; font-family:var(--font-mono); font-size:.66rem; text-transform:uppercase;}
+.detail-list{list-style:none; border-top:1px solid var(--line);}
+.detail-list li{display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--line); font-size:.95rem;}
+.detail-list span{color:#7c8874; font-family:var(--font-mono); font-size:.74rem; text-transform:uppercase;}
+.doc-list{list-style:none;} .doc-list li{margin-bottom:8px;} .doc-list a{color:var(--green-dark); text-decoration:underline;}
+.badge.progress{background:#dbe9f3; color:#1f5a7a;}
+.note-box{width:100%; min-height:90px; padding:12px; border:1px solid var(--line); background:var(--cream);}
+
+/* ---------- Corrections mobile ---------- */
+.hero .eyebrow{color:var(--gold-light); text-shadow:0 1px 8px rgba(0,0,0,.55);}
+.footer-top a,.footer-top p{overflow-wrap:anywhere;}
+@media (max-width:960px){
+  .nav-row{padding:10px 16px; min-height:64px;}
+  .logo{gap:8px;}
+  .logo-mark{width:40px; height:40px;}
+  .logo-text{font-size:1.02rem; white-space:nowrap; line-height:1.15;}
+  .logo-text small{display:none;}
+  nav.main-nav{top:64px; inset:64px 0 0 0;}
+}
+@media (max-width:520px){
+  .wrap{padding:0 18px;}
+  .footer-top{grid-template-columns:1fr; padding:50px 18px 30px;}
+  .footer-bottom{padding-bottom:90px;}
+  .wa-float{width:52px; height:52px; right:16px; bottom:16px;}
+  section{padding:68px 0;}
+  .hero-content{padding-bottom:50px;}
+  .btn{white-space:normal;}
+}
+
+/* ---------- Menu mobile : panneau déroulant à droite sous le burger ---------- */
+@media (max-width:960px){
+  nav.main-nav{
+    position:absolute; inset:auto; top:calc(100% + 8px); right:14px; left:auto; bottom:auto;
+    width:min(78vw,300px); height:auto; max-height:calc(100vh - 110px); overflow-y:auto;
+    padding:6px 20px; gap:0; align-items:stretch; flex-direction:column;
+    background:var(--cream); border:1px solid var(--line); border-radius:10px;
+    box-shadow:0 20px 40px -12px rgba(28,42,23,.35);
+    transform:translateY(-8px); opacity:0; visibility:hidden;
+    transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+  }
+  nav.main-nav.open{transform:none; opacity:1; visibility:visible;}
+  nav.main-nav a{font-size:1rem; padding:13px 0;}
+  nav.main-nav a:last-child{border-bottom:none;}
+}
+
+/* ---------- Sous-menu Services (6 domaines) ---------- */
+.nav-item{display:flex; align-items:center; gap:2px; position:relative;}
+.sub-toggle{width:28px; height:28px; display:inline-flex; align-items:center; justify-content:center; color:var(--green-ink); border-radius:50%;}
+.sub-toggle svg{transition:transform .25s ease;}
+.nav-item.open .sub-toggle svg{transform:rotate(180deg);}
+nav.main-nav .submenu a{display:block; font-size:.9rem; font-weight:500; white-space:nowrap;}
+nav.main-nav .submenu a::after{display:none;}
+nav.main-nav .submenu a.active{color:var(--green); font-weight:600;}
+@media (min-width:961px){
+  .submenu{position:absolute; top:100%; left:-14px; min-width:250px; margin-top:12px; padding:8px 0;
+    background:var(--cream); border:1px solid var(--line); border-radius:8px; box-shadow:0 20px 40px -12px rgba(28,42,23,.3);
+    opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity .2s ease, transform .2s ease, visibility .2s ease; z-index:50;}
+  .submenu::before{content:''; position:absolute; left:0; right:0; top:-14px; height:14px;}
+  .nav-item:hover .submenu, .nav-item:focus-within .submenu, .nav-item.open .submenu{opacity:1; visibility:visible; transform:none;}
+  nav.main-nav .submenu a{padding:10px 20px;}
+  nav.main-nav .submenu a:hover{background:var(--cream-deep); color:var(--green-dark);}
+}
+@media (max-width:960px){
+  .nav-item{flex-wrap:wrap; width:100%; border-bottom:1px solid var(--line);}
+  .nav-item > a{flex:1; width:auto; border-bottom:none;}
+  .sub-toggle{width:44px; height:44px; border-radius:6px;}
+  .submenu{position:static; width:100%; max-height:0; overflow:hidden; transition:max-height .3s ease; padding:0;}
+  .nav-item.open .submenu{max-height:420px; padding-bottom:8px;}
+  nav.main-nav .submenu a{padding:10px 0 10px 14px; border-bottom:none; color:var(--green-dark); width:100%;}
+}
 </style>
 </head>
 <body>
@@ -323,7 +410,11 @@ footer.site{background:var(--green-ink); color:var(--cream);}
     <nav class="main-nav" id="mainNav">
       <a href="#/" data-route="/">Accueil</a>
       <a href="#/about" data-route="/about">À propos</a>
-      <a href="#/services" data-route="/services">Services</a>
+      <div class="nav-item has-sub" id="navServices">
+        <a href="#/services" data-route="/services">Services</a>
+        <button class="sub-toggle" type="button" aria-label="Afficher les domaines" aria-expanded="false"><svg viewBox="0 0 12 8" width="12" height="8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="submenu" id="navSub"></div>
+      </div>
       <a href="#/projects" data-route="/projects">Projets</a>
       <a href="#/gallery" data-route="/gallery">Galerie</a>
       <a href="#/team" data-route="/team">Équipe</a>
@@ -370,7 +461,7 @@ footer.site{background:var(--green-ink); color:var(--cream);}
       <ul>
         <li><a href="tel:+2250505134173">+225 05 05 13 41 73</a></li>
         <li><a href="mailto:contact@mtechproperties.ci">contact@mtechproperties.ci</a></li>
-        <li><a href="#/contact">Abidjan, Côte d'Ivoire</a></li>
+        <li><a href="#/contact">Siège : Assinie-Mafia, Côte d'Ivoire</a></li>
         <li><a href="#/admin/login" style="opacity:.55; font-size:.78rem;">Espace administrateur</a></li>
       </ul>
     </div>
@@ -381,7 +472,7 @@ footer.site{background:var(--green-ink); color:var(--cream);}
   </div>
 </footer>
 
-<a class="wa-float" id="waFloat" href="https://wa.me/2250505134173" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">☎</a>
+<a class="wa-float" id="waFloat" href="https://wa.me/2250505134173" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp"><svg viewBox="0 0 32 32" width="30" height="30" fill="#fff" aria-hidden="true"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.29.6 4.52 1.74 6.49L3 29l6.7-1.74A12.97 12.97 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3zm0 23.8c-1.95 0-3.86-.53-5.53-1.52l-.4-.24-3.98 1.03 1.06-3.88-.26-.4A10.77 10.77 0 0 1 5.2 16c0-5.96 4.88-10.8 10.84-10.8S26.8 10.04 26.8 16 22 26.8 16.04 26.8zm5.93-8.08c-.32-.16-1.92-.95-2.22-1.06-.3-.1-.52-.16-.73.16-.22.32-.84 1.06-1.03 1.28-.19.22-.38.24-.7.08-.32-.16-1.37-.5-2.6-1.6-.96-.86-1.6-1.9-1.8-2.22-.18-.32-.02-.5.14-.66.15-.14.32-.38.48-.57.16-.19.22-.32.32-.54.1-.22.05-.4-.03-.57-.08-.16-.73-1.76-1-2.4-.26-.63-.53-.54-.73-.55h-.62c-.22 0-.57.08-.86.4-.3.32-1.13 1.1-1.13 2.7s1.16 3.13 1.32 3.35c.16.22 2.28 3.48 5.52 4.88.77.33 1.37.53 1.84.68.77.25 1.48.21 2.04.13.62-.09 1.92-.78 2.19-1.54.27-.76.27-1.4.19-1.54-.08-.14-.3-.22-.62-.38z"/></svg></a>
 
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" id="lightboxClose">✕</span>
@@ -432,6 +523,15 @@ const DOMAINS = [
     cta:"Demander plus d'informations" },
 ];
 
+/* ---------------- Catalogue terrains & immobilier : constantes ---------------- */
+const TERRAIN_STATUS = { disponible:'Disponible', reserve:'Réservé', vendu:'Vendu' };
+const BIEN_TYPES = { maison:'Maison', villa:'Villa', appartement:'Appartement', immeuble:'Immeuble', local_commercial:'Local commercial' };
+const BIEN_MODES = { vente:'Vente', location:'Location' };
+const BIEN_STATUS = { disponible:'Disponible', reserve:'Réservé', vendu:'Vendu', loue:'Loué' };
+const REQUEST_STATUS = { nouveau:'Nouveau', en_cours:'En cours', traite:'Traité' };
+function statusBadgeClass(k){ return k==='disponible' ? 'ok' : k==='reserve' ? 'warn' : k==='loue' ? 'info' : 'off'; }
+function reqStatusBadgeClass(k){ return k==='nouveau' ? 'pending' : k==='en_cours' ? 'progress' : 'done'; }
+
 const HERO_IMAGES = [
   "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1541976590-713941681591?q=80&w=1600&auto=format&fit=crop",
@@ -461,6 +561,7 @@ function revealOnScroll(){
   }, {threshold:.15});
   els.forEach(el=>io.observe(el));
 }
+function serviceLabel(slug){ return slug==='gestion-immobiliere' ? 'Gestion immobilière' : (domainBySlug(slug)?.name || slug); }
 function domainBySlug(slug){ return DOMAINS.find(d=>d.slug===slug); }
 
 /* ---------------- Supabase helpers (avec repli démo si non configuré) ---------------- */
@@ -481,7 +582,13 @@ const DEMO = {
     {id:'s2', label:'Projets réalisés', value:'85+'},
     {id:'s3', label:'Clients satisfaits', value:'400+'},
     {id:'s4', label:'Hectares aménagés', value:'60+'},
-  ]
+  ],
+  terrains:[
+    {id:'t1', title:'Parcelle vue lagune — Assinie', description:'Terrain titré, à 5 minutes de la plage.', location:'Assinie-Mafia', superficie:'600 m²', price:'18 000 000 FCFA', status:'disponible', cover_url:'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop'},
+  ],
+  biens_immobiliers:[
+    {id:'b1', type:'villa', title:'Villa moderne 4 pièces', description:'Villa neuve avec piscine.', location:'Assinie-Mafia', price:'85 000 000 FCFA', mode:'vente', status:'disponible', cover_url:'https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=800&auto=format&fit=crop'},
+  ],
 };
 let DEMO_MODE = false;
 
@@ -509,19 +616,26 @@ const routes = {
   "/team": pageTeam,
   "/service-request": pageServiceRequest,
   "/contact": pageContact,
+  "/terrains": pageTerrains,
+  "/immobilier": pageImmobilier,
   "/admin/login": pageAdminLogin,
 };
 
 async function router(){
   const app = $('#app');
-  const hash = location.hash.replace(/^#/, '') || '/';
+  const hash = location.hash.split('?')[0].replace(/^#/, '') || '/';
   window.scrollTo(0,0);
   closeMobileNav();
 
-  $all('nav.main-nav a').forEach(a => a.classList.toggle('active', a.getAttribute('data-route') === hash));
+  $all('nav.main-nav a').forEach(a => {
+    const r = a.getAttribute('data-route');
+    a.classList.toggle('active', r === hash);
+  });
 
   // Domain detail pages: /services/<slug>
   const domainMatch = hash.match(/^\/services\/([a-z-]+)$/);
+  const terrainMatch = hash.match(/^\/terrains\/([a-zA-Z0-9-]+)$/);
+  const bienMatch = hash.match(/^\/immobilier\/([a-zA-Z0-9-]+)$/);
   // Admin pages
   if(hash.startsWith('/admin')){
     return renderAdmin(hash, app);
@@ -533,6 +647,8 @@ async function router(){
     const d = domainBySlug(domainMatch[1]);
     if(d) return pageDomain(app, d);
   }
+  if(terrainMatch){ await pageTerrainDetail(app, terrainMatch[1]); return revealOnScroll(); }
+  if(bienMatch){ await pageImmobilierDetail(app, bienMatch[1]); return revealOnScroll(); }
   const fn = routes[hash] || page404;
   await fn(app);
   revealOnScroll();
@@ -541,6 +657,7 @@ window.addEventListener('hashchange', router);
 window.addEventListener('DOMContentLoaded', ()=>{
   $('#yr').textContent = new Date().getFullYear();
   renderFooterDomains();
+  renderNavSub();
   bindNavToggle();
   router();
   supaAuthWatch();
@@ -552,7 +669,23 @@ function bindNavToggle(){
   });
   $all('nav.main-nav a').forEach(a=>a.addEventListener('click', closeMobileNav));
 }
-function closeMobileNav(){ $('#mainNav').classList.remove('open'); }
+function closeMobileNav(){
+  $('#mainNav').classList.remove('open');
+  $all('.nav-item.open').forEach(i=>{ i.classList.remove('open'); i.querySelector('.sub-toggle')?.setAttribute('aria-expanded','false'); });
+}
+function renderNavSub(){
+  $('#navSub').innerHTML = DOMAINS.map(d=>`<a href="#/services/${d.slug}" data-route="/services/${d.slug}">${esc(d.name)}</a>`).join('');
+  const item = $('#navServices'), btn = item.querySelector('.sub-toggle');
+  btn.addEventListener('click', e=>{
+    e.stopPropagation();
+    const open = item.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+}
+// Ferme le menu mobile au clic en dehors du panneau
+document.addEventListener('click', e=>{
+  if(!e.target.closest('#mainNav') && !e.target.closest('#burgerBtn')) closeMobileNav();
+});
 function renderFooterDomains(){
   $('#footerDomains').innerHTML = DOMAINS.map(d=>`<li><a href="#/services/${d.slug}">${esc(d.name)}</a></li>`).join('');
 }
@@ -582,8 +715,8 @@ async function pageHome(app){
   <section class="hero">
     <div class="hero-slides" id="heroSlides"></div>
     <div class="hero-coord">
-      <div>N 05°12' — W 03°44'</div>
-      <div>ABIDJAN · CÔTE D'IVOIRE</div>
+      <div>N 05°10' — W 03°17'</div>
+      <div>ASSINIE-MAFIA · CÔTE D'IVOIRE</div>
     </div>
     <div class="hero-content">
       <div class="eyebrow">Construction · Terrains · Immobilier</div>
@@ -773,9 +906,22 @@ async function pageServices(app){
    ========================================================================= */
 async function pageDomain(app, d){
   setSEO(d.name, d.short);
+  const hasCatalog = d.slug === 'vente-terrains' || d.slug === 'immobilier';
+  const isTerrain = d.slug === 'vente-terrains';
   app.innerHTML = `
   ${pageBannerHTML(d.name, d.long, `Services / ${d.name}`)}
+  ${hasCatalog ? `
   <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Catalogue</div>
+        <h2>${isTerrain ? 'Nos terrains en vente' : 'Nos biens immobiliers'}</h2>
+      </div>
+      <div class="catalog-grid reveal" id="domainCatalog"><div class="spinner"></div></div>
+      <div style="text-align:center; margin-top:36px;"><a href="#/${isTerrain ? 'terrains' : 'immobilier'}" class="btn btn-primary">${isTerrain ? 'Voir tous les terrains' : 'Voir tous les biens'} →</a></div>
+    </div>
+  </section>` : ''}
+  <section ${hasCatalog ? 'style="background:var(--cream-deep);"' : ''}>
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Galerie ${esc(d.name)}</div>
@@ -784,17 +930,26 @@ async function pageDomain(app, d){
       <div class="gallery-grid reveal" id="domainGallery"><div class="spinner"></div></div>
     </div>
   </section>
-  <section class="cta-band">
-    <div class="blueprint-grid"></div>
-    <div class="wrap" style="position:relative;z-index:2;">
-      <h2>${esc(d.cta)}</h2>
-      <div style="margin-top:26px;">
-        <a href="#/service-request?type=${d.slug}" class="btn btn-gold">${esc(d.cta)} →</a>
+  <section id="domainRequest">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Votre demande</div>
+        <h2>${esc(d.cta)}</h2>
       </div>
+      <div class="form-card reveal">${requestFormHTML({prefix:'dm', domainSlug:d.slug, lockType:d.slug})}</div>
     </div>
-  </section>
-  `;
+  </section>`;
+  bindRequestForm({prefix:'dm', lockType:d.slug});
+  if(hasCatalog) loadDomainCatalog(d.slug);
   await loadDomainMedia(d.slug, '#domainGallery');
+  revealOnScroll();
+}
+
+async function loadDomainCatalog(slug){
+  const el = $('#domainCatalog'); if(!el) return;
+  const t = slug === 'vente-terrains';
+  const rows = (await sbSelect(t ? 'terrains' : 'biens_immobiliers', {order:{col:'created_at', asc:false}})).slice(0,3);
+  el.innerHTML = rows.length ? rows.map(r => t ? terrainCardHTML(r) : bienCardHTML(r)).join('') : emptyStateHTML("Aucune annonce publiée pour le moment.");
 }
 
 async function loadDomainMedia(slug, targetSel){
@@ -827,7 +982,7 @@ async function pageProjects(app){
         <button class="chip active" data-f="all">Tous</button>
         ${DOMAINS.map(d=>`<button class="chip" data-f="${d.slug}">${esc(d.name)}</button>`).join('')}
       </div>
-      <div class="gallery-grid reveal" id="projectsGrid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="gallery-grid reveal" id="projectsGrid">
         ${albums.length ? albums.map(projectCardHTML).join('') : emptyStateHTML("Aucun projet publié pour le moment.")}
       </div>
     </div>
@@ -864,7 +1019,7 @@ async function pageGallery(app){
         <button class="chip active" data-f="all">Tous</button>
         ${DOMAINS.map(d=>`<button class="chip" data-f="${d.slug}">${esc(d.name)}</button>`).join('')}
       </div>
-      <div class="team-grid reveal" id="albumsGrid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="gallery-grid reveal" id="albumsGrid">
         ${albums.length ? albums.map(albumCardHTML).join('') : emptyStateHTML("Aucun album publié pour le moment.")}
       </div>
     </div>
@@ -944,67 +1099,111 @@ async function pageTeam(app){
 /* =========================================================================
    PAGE : DEMANDE DE SERVICE
    ========================================================================= */
-async function pageServiceRequest(app){
-  setSEO("Demande de service", "Faites une demande de service auprès de M-Tech Properties Ltd.");
-  const params = new URLSearchParams(location.hash.split('?')[1] || '');
-  const preselect = params.get('type') || '';
-  app.innerHTML = `
-  ${pageBannerHTML("Demande de service", "Décrivez votre besoin, notre équipe revient vers vous sous 48h ouvrées.")}
-  <section>
-    <div class="wrap">
-      <div class="form-card reveal">
-        <div class="form-msg" id="srMsg"></div>
-        <form id="serviceRequestForm">
-          <div class="field">
-            <label for="srType">Type de service *</label>
-            <select id="srType" required>
-              <option value="">Sélectionnez un service</option>
-              ${DOMAINS.map(d=>`<option value="${d.slug}" ${d.slug===preselect?'selected':''}>${esc(d.name)}</option>`).join('')}
-            </select>
-          </div>
-          <div class="field-row">
-            <div class="field"><label for="srName">Nom complet *</label><input id="srName" required></div>
-            <div class="field"><label for="srPhone">Téléphone *</label><input id="srPhone" required></div>
-          </div>
-          <div class="field"><label for="srEmail">Email</label><input id="srEmail" type="email"></div>
-          <div class="field"><label for="srDetails">Détails de votre demande *</label><textarea id="srDetails" rows="5" required></textarea></div>
-          <button class="btn btn-primary" type="submit">Envoyer la demande</button>
-        </form>
+/* ---------- Formulaire de demande réutilisable (page dédiée + pages domaines) ---------- */
+function requestFormHTML({prefix, domainSlug, lockType, contextNote}){
+  const extra = domainSlug === 'construction'
+    ? `<div class="field-row">
+         <div class="field"><label for="${prefix}Surface">Surface envisagée (m²)</label><input id="${prefix}Surface"></div>
+         <div class="field"><label for="${prefix}Budget">Budget estimatif</label><input id="${prefix}Budget"></div>
+       </div>`
+    : domainSlug === 'consultation-juridique'
+    ? `<div class="field"><label for="${prefix}Sujet">Sujet de la consultation *</label><input id="${prefix}Sujet" required></div>`
+    : domainSlug === 'gestion-immobiliere'
+    ? `<div class="field-row">
+         <div class="field"><label for="${prefix}Adresse">Adresse du bien *</label><input id="${prefix}Adresse" required></div>
+         <div class="field"><label for="${prefix}TypeBien">Type de bien</label><input id="${prefix}TypeBien" placeholder="Villa, appartement, local…"></div>
+       </div>
+       <div class="field"><label for="${prefix}Loyer">Loyer mensuel souhaité (FCFA)</label><input id="${prefix}Loyer"></div>`
+    : '';
+  return `
+    <div class="form-msg" id="${prefix}Msg"></div>
+    ${contextNote ? `<div class="form-msg ok" style="display:block;">${esc(contextNote)}</div>` : ''}
+    <form id="${prefix}Form">
+      ${lockType ? `<input type="hidden" id="${prefix}Type" value="${esc(lockType)}">` : `
+      <div class="field">
+        <label for="${prefix}Type">Type de service *</label>
+        <select id="${prefix}Type" required>
+          <option value="">Sélectionnez un service</option>
+          ${DOMAINS.map(d=>`<option value="${d.slug}">${esc(d.name)}</option>`).join('')}
+        </select>
+      </div>`}
+      <div class="field-row">
+        <div class="field"><label for="${prefix}Name">Nom complet *</label><input id="${prefix}Name" required></div>
+        <div class="field"><label for="${prefix}Phone">Téléphone *</label><input id="${prefix}Phone" required></div>
       </div>
-    </div>
-  </section>
-  `;
-  $('#serviceRequestForm').addEventListener('submit', async e=>{
+      <div class="field"><label for="${prefix}Email">Email</label><input id="${prefix}Email" type="email"></div>
+      ${extra}
+      <div class="field"><label for="${prefix}Details">Détails de votre demande *</label><textarea id="${prefix}Details" rows="4" required></textarea></div>
+      <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+    </form>`;
+}
+
+function bindRequestForm({prefix, lockType, entityRef, prefillDetails}){
+  const form = $('#'+prefix+'Form');
+  if(!form) return;
+  if(prefillDetails) $('#'+prefix+'Details').value = prefillDetails;
+  form.addEventListener('submit', async e=>{
     e.preventDefault();
-    const btn = e.target.querySelector('button');
+    const btn = form.querySelector('button[type=submit]');
     btn.disabled = true; btn.textContent = 'Envoi en cours…';
+    const val = id => { const el = $('#'+prefix+id); return el ? el.value.trim() : null; };
+    const details_extra = {};
+    if(val('Surface')) details_extra.surface = val('Surface');
+    if(val('Budget')) details_extra.budget = val('Budget');
+    if(val('Sujet')) details_extra.sujet = val('Sujet');
+    if(val('Adresse')) details_extra.adresse_bien = val('Adresse');
+    if(val('TypeBien')) details_extra.type_bien = val('TypeBien');
+    if(val('Loyer')) details_extra.loyer_souhaite = val('Loyer');
+    if(entityRef) Object.assign(details_extra, entityRef);
     const payload = {
-      service_type: $('#srType').value,
-      name: $('#srName').value.trim(),
-      phone: $('#srPhone').value.trim(),
-      email: $('#srEmail').value.trim(),
-      details: $('#srDetails').value.trim(),
-      status: 'pending',
+      service_type: lockType || val('Type'),
+      name: val('Name'), phone: val('Phone'), email: val('Email'),
+      details: val('Details'), status: 'nouveau', details_extra,
     };
-    const msg = $('#srMsg');
+    const msg = $('#'+prefix+'Msg');
     try{
       const { error } = await sb.from('service_requests').insert(payload);
       if(error) throw error;
       msg.className = 'form-msg ok'; msg.textContent = "Merci ! Votre demande a bien été envoyée. Notre équipe vous recontactera sous 48h.";
-      e.target.reset();
+      form.reset();
+      if(prefillDetails) $('#'+prefix+'Details').value = prefillDetails;
     }catch(err){
-      msg.className = 'form-msg err'; msg.textContent = "Impossible d'envoyer la demande pour le moment (connexion à la base non configurée). Contactez-nous directement au +225 05 05 13 41 73.";
+      msg.className = 'form-msg err'; msg.textContent = "Impossible d'envoyer la demande pour le moment. Contactez-nous directement au +225 05 05 13 41 73.";
     }finally{
       btn.disabled = false; btn.textContent = 'Envoyer la demande';
     }
   });
 }
 
+async function pageServiceRequest(app){
+  setSEO("Demande de service", "Faites une demande de service auprès de M-Tech Properties Ltd.");
+  const params = new URLSearchParams(location.hash.split('?')[1] || '');
+  const type = params.get('type') || '';
+  const terrainId = params.get('terrain_id'), terrainTitle = params.get('terrain_title');
+  const bienId = params.get('bien_id'), bienTitle = params.get('bien_title');
+  const entityRef = terrainId ? {terrain_id:terrainId, terrain_title:terrainTitle}
+                  : bienId ? {bien_id:bienId, bien_title:bienTitle} : null;
+  const subject = terrainTitle || bienTitle;
+  const lock = (entityRef && type) ? type : '';
+  app.innerHTML = `
+  ${pageBannerHTML("Demande de service", "Décrivez votre besoin, notre équipe revient vers vous sous 48h ouvrées.")}
+  <section>
+    <div class="wrap">
+      <div class="form-card reveal">
+        ${requestFormHTML({prefix:'sr', domainSlug:type, lockType:lock, contextNote: subject ? `Demande concernant : ${subject}` : ''})}
+      </div>
+    </div>
+  </section>`;
+  if(!lock && type && $('#srType')) $('#srType').value = type;
+  bindRequestForm({prefix:'sr', lockType:lock, entityRef,
+    prefillDetails: subject ? `Bonjour, je souhaite plus d'informations concernant « ${subject} ».` : ''});
+}
+
 /* =========================================================================
    PAGE : CONTACT
    ========================================================================= */
 async function pageContact(app){
-  setSEO("Contact", "Contactez M-Tech Properties Ltd — Abidjan, Côte d'Ivoire.");
+  setSEO("Contact", "Contactez M-Tech Properties Ltd — Assinie-Mafia, Côte d'Ivoire.");
   app.innerHTML = `
   ${pageBannerHTML("Contact", "Une question, un projet ? Écrivez-nous ou passez nous voir.")}
   <section>
@@ -1031,9 +1230,9 @@ async function pageContact(app){
         <ul class="contact-info-list">
           <li><span class="ic">☎</span><div>+225 05 05 13 41 73<br><span style="font-size:.8rem;color:#7c8874;">Lun–Ven, 8h–18h</span></div></li>
           <li><span class="ic">✉</span><div>contact@mtechproperties.ci</div></li>
-          <li><span class="ic">⌂</span><div>Abidjan, Côte d'Ivoire</div></li>
+          <li><span class="ic">⌂</span><div>Siège social : Assinie-Mafia, Côte d'Ivoire</div></li>
         </ul>
-        <iframe class="map-embed" style="margin-top:24px;" src="https://www.google.com/maps?q=Abidjan,Côte d'Ivoire&output=embed" loading="lazy"></iframe>
+        <iframe class="map-embed" style="margin-top:24px;" src="https://www.google.com/maps?q=Assinie-Mafia,Côte d'Ivoire&output=embed" loading="lazy"></iframe>
       </div>
     </div>
   </section>
@@ -1063,6 +1262,177 @@ async function pageContact(app){
       btn.disabled=false; btn.textContent='Envoyer le message';
     }
   });
+}
+
+/* =========================================================================
+   CATALOGUES PUBLICS : TERRAINS & IMMOBILIER
+   ========================================================================= */
+const PLACEHOLDER_IMG = HERO_IMAGES[1];
+
+function terrainCardHTML(t){
+  return `<a class="catalog-card" href="#/terrains/${esc(t.id)}">
+    <div class="cover" style="background-image:url('${esc(t.cover_url || PLACEHOLDER_IMG)}')">
+      <span class="status-badge ${statusBadgeClass(t.status)}">${esc(TERRAIN_STATUS[t.status] || t.status)}</span>
+    </div>
+    <div class="body">
+      <span class="plot-tick">${esc(t.location || '')}</span>
+      <h3>${esc(t.title)}</h3>
+      <div class="meta"><span>${esc(t.superficie || '')}</span><b>${esc(t.price || 'Prix sur demande')}</b></div>
+    </div>
+  </a>`;
+}
+function bienCardHTML(b){
+  return `<a class="catalog-card" href="#/immobilier/${esc(b.id)}">
+    <div class="cover" style="background-image:url('${esc(b.cover_url || PLACEHOLDER_IMG)}')">
+      <span class="status-badge ${statusBadgeClass(b.status)}">${esc(BIEN_STATUS[b.status] || b.status)}</span>
+      <span class="mode-tag">${esc(BIEN_MODES[b.mode] || b.mode)}</span>
+    </div>
+    <div class="body">
+      <span class="plot-tick">${esc(BIEN_TYPES[b.type] || b.type)} · ${esc(b.location || '')}</span>
+      <h3>${esc(b.title)}</h3>
+      <div class="meta"><b>${esc(b.price || 'Prix sur demande')}</b></div>
+    </div>
+  </a>`;
+}
+function mediaGalleryHTML(items, coverUrl){
+  const list = items.length ? items : (coverUrl ? [{type:'photo', url:coverUrl}] : []);
+  if(!list.length) return emptyStateHTML("Aucun média disponible.");
+  return `<div class="gallery-grid">` + list.map(m=>`
+    <div class="gallery-item" onclick="openLightbox('${esc(m.url)}','${m.type}')">
+      ${m.type==='video' ? `<video src="${esc(m.url)}" muted></video><span class="play"></span>` : `<img src="${esc(m.url)}" loading="lazy" alt="">`}
+    </div>`).join('') + `</div>`;
+}
+function chipsHTML(id, options, label){
+  return `<div class="projects-filter" id="${id}">
+    <button class="chip active" data-f="all">${label}</button>
+    ${options.map(([k,v])=>`<button class="chip" data-f="${esc(k)}">${esc(v)}</button>`).join('')}
+  </div>`;
+}
+
+/* ---------------- Page catalogue terrains ---------------- */
+async function pageTerrains(app){
+  setSEO("Vente de terrains", "Catalogue des terrains en vente à Assinie-Mafia et alentours — M-Tech Properties Ltd.");
+  const all = await sbSelect('terrains', {order:{col:'created_at', asc:false}});
+  const locations = [...new Set(all.map(t=>t.location).filter(Boolean))];
+  app.innerHTML = `
+  ${pageBannerHTML("Vente de terrains", "Parcelles titrées et sécurisées, dans des zones à fort potentiel.", "Vente de terrains")}
+  <section><div class="wrap">
+    <div class="catalog-filters reveal">
+      ${chipsHTML('tStatus', Object.entries(TERRAIN_STATUS), 'Tous les statuts')}
+      <div class="field" style="max-width:280px; margin-bottom:28px;">
+        <label for="tLoc">Localisation</label>
+        <select id="tLoc"><option value="all">Toutes les localisations</option>${locations.map(l=>`<option>${esc(l)}</option>`).join('')}</select>
+      </div>
+    </div>
+    <div class="catalog-grid" id="tGrid"></div>
+  </div></section>`;
+  let fStatus = 'all', fLoc = 'all';
+  const draw = () => {
+    const rows = all.filter(t => (fStatus==='all' || t.status===fStatus) && (fLoc==='all' || t.location===fLoc));
+    $('#tGrid').innerHTML = rows.length ? rows.map(terrainCardHTML).join('') : emptyStateHTML("Aucun terrain ne correspond à ces critères.");
+  };
+  $all('#tStatus .chip').forEach(b=>b.addEventListener('click', ()=>{
+    $all('#tStatus .chip').forEach(x=>x.classList.remove('active')); b.classList.add('active'); fStatus = b.dataset.f; draw();
+  }));
+  $('#tLoc').addEventListener('change', e=>{ fLoc = e.target.value; draw(); });
+  draw();
+}
+
+async function pageTerrainDetail(app, id){
+  const rows = await sbSelect('terrains', {eq:{id}});
+  const t = rows[0];
+  if(!t){ return page404(app); }
+  setSEO(t.title, (t.description||'').slice(0,150));
+  const [media, docs] = await Promise.all([
+    sbSelect('terrain_media', {eq:{terrain_id:id}}),
+    sbSelect('terrain_documents', {eq:{terrain_id:id}}),
+  ]);
+  const reqHref = `#/service-request?type=vente-terrains&terrain_id=${encodeURIComponent(t.id)}&terrain_title=${encodeURIComponent(t.title)}`;
+  app.innerHTML = `
+  ${pageBannerHTML(esc(t.title), t.location || '', `Vente de terrains / ${t.title}`)}
+  <section><div class="wrap two-col" style="align-items:start;">
+    <div>${mediaGalleryHTML(media, t.cover_url)}</div>
+    <div>
+      <span class="status-badge ${statusBadgeClass(t.status)}" style="position:static;">${esc(TERRAIN_STATUS[t.status]||t.status)}</span>
+      <h2 style="margin:16px 0;">${esc(t.title)}</h2>
+      <ul class="detail-list">
+        <li><span>Localisation</span><b>${esc(t.location||'—')}</b></li>
+        <li><span>Superficie</span><b>${esc(t.superficie||'—')}</b></li>
+        <li><span>Prix</span><b>${esc(t.price||'Sur demande')}</b></li>
+      </ul>
+      <p style="margin:20px 0; white-space:pre-wrap;">${esc(t.description||'')}</p>
+      ${docs.length ? `<h4 style="margin-bottom:10px;">Documents</h4><ul class="doc-list">${docs.map(d=>`<li><a href="${esc(d.url)}" target="_blank" rel="noopener">📄 ${esc(d.label||'Document')}</a></li>`).join('')}</ul>` : ''}
+      <a href="${reqHref}" class="btn btn-gold" style="margin-top:20px;">Demander plus d'informations →</a>
+    </div>
+  </div></section>`;
+}
+
+/* ---------------- Page catalogue immobilier ---------------- */
+async function pageImmobilier(app){
+  setSEO("Immobilier", "Maisons, villas, appartements, immeubles et locaux commerciaux à vendre ou à louer — M-Tech Properties Ltd.");
+  const all = await sbSelect('biens_immobiliers', {order:{col:'created_at', asc:false}});
+  app.innerHTML = `
+  ${pageBannerHTML("Immobilier", "Biens à vendre ou à louer, sélectionnés par nos équipes.", "Immobilier")}
+  <section><div class="wrap">
+    <div class="catalog-filters reveal">
+      ${chipsHTML('bMode', Object.entries(BIEN_MODES), 'Vente & location')}
+      ${chipsHTML('bType', Object.entries(BIEN_TYPES), 'Tous les types')}
+    </div>
+    <div class="catalog-grid" id="bGrid"></div>
+  </div></section>
+  <section id="gestion" style="background:var(--cream-deep);"><div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Gestion immobilière</div>
+      <h2>Confiez-nous la gestion de votre bien</h2>
+      <p style="margin-top:12px;">Propriétaire, laissez M-Tech Properties s'occuper de tout : recherche de locataires, encaissement des loyers, suivi et entretien de votre bien.</p>
+    </div>
+    <div class="values-grid reveal" style="margin-bottom:40px;">
+      <div class="value-cell"><h4 style="font-size:1.05rem;">Recherche de locataires</h4><p style="margin-top:8px;font-size:.9rem;">Mise en valeur, visites et sélection des dossiers.</p></div>
+      <div class="value-cell"><h4 style="font-size:1.05rem;">Encaissement des loyers</h4><p style="margin-top:8px;font-size:.9rem;">Suivi mensuel des paiements et relance des impayés.</p></div>
+      <div class="value-cell"><h4 style="font-size:1.05rem;">Suivi &amp; entretien</h4><p style="margin-top:8px;font-size:.9rem;">Interlocuteur unique pour les travaux et la vie du bien.</p></div>
+    </div>
+    <div class="form-card reveal">
+      <h3 style="margin-bottom:22px;">Confier la gestion de mon bien</h3>
+      ${requestFormHTML({prefix:'gs', domainSlug:'gestion-immobiliere', lockType:'gestion-immobiliere'})}
+    </div>
+  </div></section>`;
+  bindRequestForm({prefix:'gs', lockType:'gestion-immobiliere'});
+  let fMode = 'all', fType = 'all';
+  const draw = () => {
+    const rows = all.filter(b => (fMode==='all' || b.mode===fMode) && (fType==='all' || b.type===fType));
+    $('#bGrid').innerHTML = rows.length ? rows.map(bienCardHTML).join('') : emptyStateHTML("Aucun bien ne correspond à ces critères.");
+  };
+  const bind = (sel, setter) => $all(sel+' .chip').forEach(b=>b.addEventListener('click', ()=>{
+    $all(sel+' .chip').forEach(x=>x.classList.remove('active')); b.classList.add('active'); setter(b.dataset.f); draw();
+  }));
+  bind('#bMode', v=>fMode=v); bind('#bType', v=>fType=v);
+  draw();
+}
+
+async function pageImmobilierDetail(app, id){
+  const rows = await sbSelect('biens_immobiliers', {eq:{id}});
+  const b = rows[0];
+  if(!b){ return page404(app); }
+  setSEO(b.title, (b.description||'').slice(0,150));
+  const media = await sbSelect('bien_media', {eq:{bien_id:id}});
+  const reqHref = `#/service-request?type=immobilier&bien_id=${encodeURIComponent(b.id)}&bien_title=${encodeURIComponent(b.title)}`;
+  app.innerHTML = `
+  ${pageBannerHTML(esc(b.title), b.location || '', `Immobilier / ${b.title}`)}
+  <section><div class="wrap two-col" style="align-items:start;">
+    <div>${mediaGalleryHTML(media, b.cover_url)}</div>
+    <div>
+      <span class="status-badge ${statusBadgeClass(b.status)}" style="position:static;">${esc(BIEN_STATUS[b.status]||b.status)}</span>
+      <h2 style="margin:16px 0;">${esc(b.title)}</h2>
+      <ul class="detail-list">
+        <li><span>Type</span><b>${esc(BIEN_TYPES[b.type]||b.type)}</b></li>
+        <li><span>Mode</span><b>${esc(BIEN_MODES[b.mode]||b.mode)}</b></li>
+        <li><span>Localisation</span><b>${esc(b.location||'—')}</b></li>
+        <li><span>Prix</span><b>${esc(b.price||'Sur demande')}</b></li>
+      </ul>
+      <p style="margin:20px 0; white-space:pre-wrap;">${esc(b.description||'')}</p>
+      <a href="${reqHref}" class="btn btn-gold">Demander plus d'informations →</a>
+    </div>
+  </div></section>`;
 }
 
 function page404(app){
@@ -1148,6 +1518,9 @@ const ADMIN_NAV = [
   {key:'dashboard', label:'Tableau de bord', icon:'▦'},
   {key:'team', label:'Équipe', icon:'◍'},
   {key:'albums', label:'Albums médias', icon:'▤'},
+  {key:'terrains', label:'Terrains', icon:'⌖'},
+  {key:'gestion', label:'Gestion locative', icon:'⚑'},
+  {key:'biens', label:'Biens immobiliers', icon:'⌂'},
   {key:'messages', label:'Messages', icon:'✉'},
   {key:'requests', label:'Demandes de service', icon:'☎'},
   {key:'stats', label:'Chiffres clés', icon:'#'},
@@ -1174,6 +1547,9 @@ async function renderAdmin(hash, app){
   if(sub === 'dashboard') return adminOverview(main);
   if(sub === 'team') return adminTeam(main);
   if(sub === 'albums') return adminAlbums(main);
+  if(sub === 'terrains') return adminTerrains(main);
+  if(sub === 'gestion') return adminGestion(main);
+  if(sub === 'biens') return adminBiens(main);
   if(sub === 'messages') return adminMessages(main);
   if(sub === 'requests') return adminRequests(main);
   if(sub === 'stats') return adminStats(main);
@@ -1186,7 +1562,7 @@ async function adminOverview(main){
     sbSelect('team'), sbSelect('albums'), sbSelect('contacts'), sbSelect('service_requests'),
   ]);
   const unread = contacts.filter(c=>!c.is_read).length;
-  const pending = requests.filter(r=>r.status==='pending').length;
+  const pending = requests.filter(r=>r.status==='nouveau' || r.status==='pending').length;
   main.innerHTML = `
     <h2 style="margin-bottom:10px;">Tableau de bord</h2>
     <p style="margin-bottom:30px;">${DEMO_MODE ? "⚠ Supabase n'est pas encore configuré — les chiffres ci-dessous sont des données de démonstration." : "Vue d'ensemble de l'activité du site."}</p>
@@ -1280,6 +1656,7 @@ async function submitTeamForm(){
 /* ---------------- Gestion des albums médias ---------------- */
 async function adminAlbums(main){
   const albums = await sbSelect('albums', {order:{col:'created_at'}});
+  window._ttl = window._ttl || {}; albums.forEach(a=>window._ttl[a.id]=a.title);
   main.innerHTML = `
     <div class="admin-toolbar">
       <h2 style="margin:0;">Albums médias (${albums.length})</h2>
@@ -1292,7 +1669,7 @@ async function adminAlbums(main){
           <td><img class="thumb-sm" src="${esc(a.cover_url||'')}"></td>
           <td>${esc(a.title)}</td><td>${esc(domainBySlug(a.domain)?.name||a.domain)}</td>
           <td class="row-actions">
-            <button class="icon-btn" title="Gérer les médias" onclick="openAlbumMediaModal('${a.id}','${esc(a.title)}')">▤</button>
+            <button class="icon-btn" title="Gérer les médias" onclick="openAlbumMediaModal('${a.id}',window._ttl['${a.id}'])">▤</button>
             <button class="icon-btn" onclick="openAlbumModal('${a.id}')">✎</button>
             <button class="icon-btn" onclick="deleteRow('albums','${a.id}', ()=>adminAlbums($('#adminMain')))">🗑</button>
           </td>
@@ -1434,47 +1811,466 @@ async function markRead(table, id, silent){
   }catch(err){ if(!silent) toast('Action impossible : connexion Supabase non configurée.'); }
 }
 
-/* ---------------- Demandes de service ---------------- */
+/* ---------------- Demandes de service (statut + note interne) ---------------- */
+function normStatus(s){ return s==='pending' ? 'nouveau' : s==='done' ? 'traite' : (s || 'nouveau'); }
 async function adminRequests(main){
-  const requests = await sbSelect('service_requests', {order:{col:'created_at'}});
+  const requests = await sbSelect('service_requests', {order:{col:'created_at', asc:false}});
+  window._requestsCache = requests;
+  const filter = window._reqFilter || 'all';
+  const rows = requests.filter(r => filter==='all' || normStatus(r.status)===filter);
   main.innerHTML = `
-    <h2 style="margin-bottom:24px;">Demandes de service (${requests.length})</h2>
+    <div class="admin-toolbar">
+      <h2 style="margin:0;">Demandes clients (${requests.length})</h2>
+      <select id="reqFilter" style="padding:9px 12px; border:1px solid var(--line);">
+        <option value="all">Tous les statuts</option>
+        ${Object.entries(REQUEST_STATUS).map(([k,v])=>`<option value="${k}" ${filter===k?'selected':''}>${v}</option>`).join('')}
+      </select>
+    </div>
     <div class="admin-panel">
-      ${requests.length ? `<table class="data-table"><thead><tr><th>Statut</th><th>Nom</th><th>Service</th><th>Contact</th><th>Date</th><th></th></tr></thead>
-      <tbody>${requests.map(r=>`
+      ${rows.length ? `<table class="data-table"><thead><tr><th>Statut</th><th>Nom</th><th>Type de demande</th><th>Contact</th><th>Date</th><th></th></tr></thead>
+      <tbody>${rows.map(r=>{ const st = normStatus(r.status); const ex = r.details_extra || {}; return `
         <tr>
-          <td><span class="badge ${r.status==='done'?'done':'pending'}">${r.status==='done'?'Traitée':'En attente'}</span></td>
+          <td><span class="badge ${reqStatusBadgeClass(st)}">${REQUEST_STATUS[st]}</span></td>
           <td>${esc(r.name)}</td>
-          <td>${esc(domainBySlug(r.service_type)?.name || r.service_type)}</td>
+          <td>${esc(serviceLabel(r.service_type))}${ex.terrain_title||ex.bien_title ? `<br><small>${esc(ex.terrain_title||ex.bien_title)}</small>`:''}</td>
           <td>${esc(r.phone)}${r.email?'<br>'+esc(r.email):''}</td>
           <td>${fmtDate(r.created_at)}</td>
-          <td class="row-actions">
-            <button class="icon-btn" onclick="viewRequest('${r.id}')">👁</button>
-            ${r.status!=='done'?`<button class="icon-btn" onclick="markDoneRequest('${r.id}')">✓</button>`:''}
-          </td>
-        </tr>`).join('')}</tbody></table>` : emptyStateHTML('Aucune demande reçue pour le moment.')}
+          <td class="row-actions"><button class="icon-btn" title="Détail" onclick="viewRequest('${r.id}')">👁</button></td>
+        </tr>`; }).join('')}</tbody></table>` : emptyStateHTML('Aucune demande pour ce filtre.')}
     </div>
     ${modalShellHTML('requestViewModal', 'Demande de service', '<div id="requestViewBody"></div>', false, true)}
   `;
-  window._requestsCache = requests;
+  $('#reqFilter').addEventListener('change', e=>{ window._reqFilter = e.target.value; adminRequests($('#adminMain')); });
 }
 function viewRequest(id){
   const r = (window._requestsCache||[]).find(x=>x.id===id);
   if(!r) return;
+  const st = normStatus(r.status);
+  const ex = r.details_extra || {};
+  const extras = [];
+  if(ex.terrain_title) extras.push(['Terrain concerné', ex.terrain_title]);
+  if(ex.bien_title) extras.push(['Bien concerné', ex.bien_title]);
+  if(ex.surface) extras.push(['Surface', ex.surface]);
+  if(ex.budget) extras.push(['Budget', ex.budget]);
+  if(ex.sujet) extras.push(['Sujet', ex.sujet]);
+  if(ex.adresse_bien) extras.push(['Adresse du bien', ex.adresse_bien]);
+  if(ex.type_bien) extras.push(['Type de bien', ex.type_bien]);
+  if(ex.loyer_souhaite) extras.push(['Loyer souhaité', ex.loyer_souhaite]);
   $('#requestViewBody').innerHTML = `
     <p><b>${esc(r.name)}</b> — ${fmtDate(r.created_at)}</p>
     <p style="margin-top:6px;">${esc(r.phone)}${r.email?' · '+esc(r.email):''}</p>
-    <p style="margin-top:14px;"><b>Service :</b> ${esc(domainBySlug(r.service_type)?.name||r.service_type)}</p>
-    <p style="margin-top:10px; white-space:pre-wrap;">${esc(r.details)}</p>`;
+    <p style="margin-top:12px;"><b>Type de demande :</b> ${esc(serviceLabel(r.service_type))}</p>
+    ${extras.map(([k,v])=>`<p style="margin-top:6px;"><b>${esc(k)} :</b> ${esc(v)}</p>`).join('')}
+    <p style="margin-top:12px; white-space:pre-wrap;">${esc(r.details)}</p>
+    <div class="field" style="margin-top:20px;"><label>Statut</label>
+      <select id="reqStatusSel">${Object.entries(REQUEST_STATUS).map(([k,v])=>`<option value="${k}" ${k===st?'selected':''}>${v}</option>`).join('')}</select></div>
+    <div class="field"><label>Note interne (non visible du public)</label>
+      <textarea class="note-box" id="reqNote">${esc(r.internal_note||'')}</textarea></div>
+    <button class="btn btn-primary btn-sm" type="button" onclick="saveRequest('${r.id}')">Enregistrer</button>`;
   $('#requestViewModal').classList.add('open');
 }
-async function markDoneRequest(id){
+async function saveRequest(id){
   try{
-    const { error } = await sb.from('service_requests').update({status:'done'}).eq('id', id);
+    const { error } = await sb.from('service_requests').update({ status:$('#reqStatusSel').value, internal_note:$('#reqNote').value.trim() }).eq('id', id);
     if(error) throw error;
-    toast('Demande marquée comme traitée.');
+    toast('Demande mise à jour.');
+    closeModal('requestViewModal');
     adminRequests($('#adminMain'));
-  }catch(err){ toast('Action impossible : connexion Supabase non configurée.'); }
+  }catch(err){ toast('Action impossible : '+(err.message||'erreur')); }
+}
+
+/* =========================================================================
+   ADMIN — GESTION LOCATIVE (propriétaires, biens gérés, locataires, loyers)
+   ========================================================================= */
+const money = n => (n===null || n===undefined || n==='') ? '—' : Number(n).toLocaleString('fr-FR') + ' FCFA';
+const GCFG = {
+  proprietaires:{ title:'Propriétaires', single:'propriétaire', order:'nom',
+    cols:['nom','telephone','email'],
+    fields:[ {key:'nom',label:'Nom complet',req:1}, {key:'telephone',label:'Téléphone',req:1}, {key:'email',label:'Email'},
+             {key:'adresse',label:'Adresse'}, {key:'notes',label:'Notes',type:'textarea'} ] },
+  biens_geres:{ title:'Biens gérés', single:'bien', order:'titre',
+    cols:['titre','proprietaire_id','loyer_mensuel','commission_pct','statut'],
+    fields:[ {key:'titre',label:'Désignation du bien',req:1},
+             {key:'proprietaire_id',label:'Propriétaire',type:'fk',fk:'proprietaires',fkLabel:'nom',req:1},
+             {key:'adresse',label:'Adresse / localisation'},
+             {key:'type',label:'Type',type:'select',options:BIEN_TYPES},
+             {key:'loyer_mensuel',label:'Loyer mensuel (FCFA)',type:'number'},
+             {key:'commission_pct',label:'Commission M-Tech (%)',type:'number'},
+             {key:'statut',label:'Statut',type:'select',options:{occupe:'Occupé',vacant:'Vacant'}},
+             {key:'notes',label:'Notes',type:'textarea'} ] },
+  locataires:{ title:'Locataires', single:'locataire', order:'nom',
+    cols:['nom','telephone','bien_gere_id','date_debut','actif'],
+    fields:[ {key:'nom',label:'Nom complet',req:1}, {key:'telephone',label:'Téléphone',req:1}, {key:'email',label:'Email'},
+             {key:'bien_gere_id',label:'Bien loué',type:'fk',fk:'biens_geres',fkLabel:'titre',req:1},
+             {key:'date_debut',label:'Début du bail',type:'date'}, {key:'date_fin',label:'Fin du bail',type:'date'},
+             {key:'caution',label:'Caution (FCFA)',type:'number'},
+             {key:'actif',label:'Statut',type:'bool',options:{true:'Actif',false:'Sorti'}} ] },
+  loyers:{ title:'Loyers', single:'loyer', order:'periode', desc:true,
+    cols:['periode','bien_gere_id','locataire_id','montant_du','montant_paye','statut'],
+    fields:[ {key:'bien_gere_id',label:'Bien',type:'fk',fk:'biens_geres',fkLabel:'titre',req:1},
+             {key:'locataire_id',label:'Locataire',type:'fk',fk:'locataires',fkLabel:'nom'},
+             {key:'periode',label:'Mois concerné (1er du mois)',type:'date',req:1},
+             {key:'montant_du',label:'Montant dû (FCFA)',type:'number',req:1},
+             {key:'montant_paye',label:'Montant payé (FCFA)',type:'number'},
+             {key:'date_paiement',label:'Date de paiement',type:'date'},
+             {key:'note',label:'Note',type:'textarea'} ] },
+};
+const LOYER_STATUS = { paye:'Payé', partiel:'Partiel', impaye:'Impayé' };
+const GLABEL = { nom:'Nom', telephone:'Téléphone', email:'Email', titre:'Bien', proprietaire_id:'Propriétaire', loyer_mensuel:'Loyer', commission_pct:'Commission',
+  statut:'Statut', bien_gere_id:'Bien', date_debut:'Début bail', actif:'Statut', periode:'Mois', locataire_id:'Locataire', montant_du:'Dû', montant_paye:'Payé' };
+
+let _gTab = 'proprietaires', _gRows = [], _gMaps = {};
+
+async function gLoadMaps(){
+  const [pr, bg, lo] = await Promise.all([ sbSelect('proprietaires'), sbSelect('biens_geres'), sbSelect('locataires') ]);
+  _gMaps = {
+    proprietaires: Object.fromEntries(pr.map(r=>[r.id, r.nom])),
+    biens_geres: Object.fromEntries(bg.map(r=>[r.id, r.titre])),
+    locataires: Object.fromEntries(lo.map(r=>[r.id, r.nom])),
+  };
+  _gMaps._bg = bg; _gMaps._lo = lo;
+}
+function gCell(tab, key, row){
+  const v = row[key];
+  if(key==='proprietaire_id') return esc(_gMaps.proprietaires[v] || '—');
+  if(key==='bien_gere_id') return esc(_gMaps.biens_geres[v] || '—');
+  if(key==='locataire_id') return esc(_gMaps.locataires[v] || '—');
+  if(['loyer_mensuel','montant_du','montant_paye'].includes(key)) return money(v);
+  if(key==='commission_pct') return v!=null ? v+' %' : '—';
+  if(key==='periode') return v ? new Date(v).toLocaleDateString('fr-FR',{month:'long',year:'numeric'}) : '—';
+  if(key==='date_debut') return v ? fmtDate(v) : '—';
+  if(key==='actif') return `<span class="badge ${v?'done':'pending'}">${v?'Actif':'Sorti'}</span>`;
+  if(key==='statut' && tab==='loyers') return `<span class="badge ${v==='paye'?'done':v==='partiel'?'progress':'pending'}">${LOYER_STATUS[v]||v}</span>`;
+  if(key==='statut') return `<span class="badge ${v==='occupe'?'done':'pending'}">${v==='occupe'?'Occupé':'Vacant'}</span>`;
+  return esc(v ?? '');
+}
+
+async function adminGestion(main){
+  await gLoadMaps();
+  const cfg = GCFG[_gTab];
+  let q = sb.from(_gTab).select('*').order(cfg.order, {ascending: !cfg.desc});
+  let rows = [];
+  try{ const r = await q; if(r.error) throw r.error; rows = r.data || []; }
+  catch(e){ main.innerHTML = `<div class="admin-panel"><p>Tables de gestion locative introuvables. Exécute <b>schema_phase3.sql</b> dans Supabase (SQL Editor).</p></div>`; return; }
+  if(_gTab==='loyers' && window._gMonth){ rows = rows.filter(r => (r.periode||'').startsWith(window._gMonth)); }
+  _gRows = rows;
+
+  let kpi = '';
+  if(_gTab==='loyers'){
+    const due = rows.reduce((s,r)=>s+Number(r.montant_du||0),0);
+    const paid = rows.reduce((s,r)=>s+Number(r.montant_paye||0),0);
+    const comm = rows.reduce((s,r)=>{ const b=_gMaps._bg.find(x=>x.id===r.bien_gere_id); return s + Number(r.montant_paye||0)*Number(b?.commission_pct||0)/100; },0);
+    kpi = `<div class="kpi-row">
+      <div class="kpi"><div class="n" style="font-size:1.4rem;">${money(due)}</div><div class="l">Total dû</div></div>
+      <div class="kpi"><div class="n" style="font-size:1.4rem;">${money(paid)}</div><div class="l">Encaissé</div></div>
+      <div class="kpi"><div class="n" style="font-size:1.4rem;">${money(Math.max(due-paid,0))}</div><div class="l">Reste à encaisser</div></div>
+      <div class="kpi"><div class="n" style="font-size:1.4rem;">${money(Math.round(comm))}</div><div class="l">Commission M-Tech</div></div>
+    </div>`;
+  }
+  main.innerHTML = `
+    <div class="admin-toolbar"><h2 style="margin:0;">Gestion locative</h2></div>
+    <div class="projects-filter">${Object.entries(GCFG).map(([k,c])=>`<button class="chip ${k===_gTab?'active':''}" onclick="_gTab='${k}'; adminGestion($('#adminMain'))">${c.title}</button>`).join('')}</div>
+    ${kpi}
+    <div class="admin-toolbar">
+      <h3 style="margin:0;">${cfg.title} (${rows.length})</h3>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        ${_gTab==='loyers' ? `<input type="month" id="gMonth" value="${window._gMonth||''}" style="padding:8px; border:1px solid var(--line);">
+          <button class="btn btn-outline btn-sm" onclick="genererLoyers()">Générer les loyers du mois</button>` : ''}
+        <button class="btn btn-primary btn-sm" onclick="openGModal()">+ Ajouter</button>
+      </div>
+    </div>
+    <div class="admin-panel">
+      ${rows.length ? `<table class="data-table"><thead><tr>${cfg.cols.map(c=>`<th>${GLABEL[c]||c}</th>`).join('')}<th></th></tr></thead>
+        <tbody>${rows.map(r=>`<tr>${cfg.cols.map(c=>`<td>${gCell(_gTab,c,r)}</td>`).join('')}
+          <td class="row-actions"><button class="icon-btn" onclick="openGModal('${r.id}')">✎</button>
+          <button class="icon-btn" onclick="deleteRow('${_gTab}','${r.id}', ()=>adminGestion($('#adminMain')))">🗑</button></td></tr>`).join('')}</tbody></table>`
+        : emptyStateHTML('Aucune donnée pour le moment.')}
+    </div>
+    <div class="modal-overlay" id="gModal"><div class="modal-box">
+      <h3 id="gTitle"></h3>
+      <form onsubmit="event.preventDefault(); gSubmit();"><input type="hidden" id="g_id"><div id="gFields"></div>
+        <div style="display:flex; gap:10px; margin-top:10px;"><button class="btn btn-primary btn-sm" type="submit">Enregistrer</button>
+        <button class="btn btn-outline btn-sm" type="button" onclick="closeModal('gModal')">Annuler</button></div></form>
+    </div></div>`;
+  const mi = $('#gMonth'); if(mi) mi.addEventListener('change', e=>{ window._gMonth = e.target.value; adminGestion($('#adminMain')); });
+}
+
+function gFieldHTML(f, v){
+  const id = 'g_'+f.key, req = f.req ? 'required' : '';
+  let input;
+  if(f.type==='textarea') input = `<textarea id="${id}" rows="3">${esc(v ?? '')}</textarea>`;
+  else if(f.type==='select' || f.type==='bool') input = `<select id="${id}">${Object.entries(f.options).map(([k,l])=>`<option value="${k}" ${String(v)===k?'selected':''}>${l}</option>`).join('')}</select>`;
+  else if(f.type==='fk'){
+    const map = _gMaps[f.fk] || {};
+    input = `<select id="${id}" ${req}><option value="">— Choisir —</option>${Object.entries(map).map(([k,l])=>`<option value="${k}" ${v===k?'selected':''}>${esc(l)}</option>`).join('')}</select>`;
+  }
+  else input = `<input id="${id}" type="${f.type==='number'?'number':f.type==='date'?'date':'text'}" ${f.type==='number'?'step="any"':''} value="${esc(v ?? '')}" ${req}>`;
+  return `<div class="field"><label for="${id}">${f.label}${f.req?' *':''}</label>${input}</div>`;
+}
+function openGModal(id){
+  const cfg = GCFG[_gTab];
+  const row = id ? _gRows.find(r=>r.id===id) : null;
+  $('#gTitle').textContent = (row ? 'Modifier — ' : 'Ajouter — ') + cfg.single;
+  $('#g_id').value = id || '';
+  $('#gFields').innerHTML = cfg.fields.map(f=>gFieldHTML(f, row ? row[f.key] : (f.type==='bool' ? 'true' : undefined))).join('');
+  $('#gModal').classList.add('open');
+}
+async function gSubmit(){
+  const cfg = GCFG[_gTab], id = $('#g_id').value, payload = {};
+  cfg.fields.forEach(f=>{
+    let v = $('#g_'+f.key).value;
+    if(f.type==='bool') v = (v==='true');
+    else if(f.type==='number') v = v==='' ? null : Number(v);
+    else if(f.type==='date' || f.type==='fk') v = v==='' ? null : v;
+    else v = v.trim();
+    payload[f.key] = v;
+  });
+  if(_gTab==='loyers'){
+    const due = Number(payload.montant_du||0), paid = Number(payload.montant_paye||0);
+    payload.statut = paid>=due && due>0 ? 'paye' : paid>0 ? 'partiel' : 'impaye';
+  }
+  try{
+    const { error } = id ? await sb.from(_gTab).update(payload).eq('id',id) : await sb.from(_gTab).insert(payload);
+    if(error) throw error;
+    toast(id?'Mis à jour.':'Ajouté.'); closeModal('gModal'); adminGestion($('#adminMain'));
+  }catch(err){ toast('Action impossible : '+(err.message||'erreur')); }
+}
+async function genererLoyers(){
+  const d = new Date(); const periode = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-01`;
+  const rows = _gMaps._lo.filter(l=>l.actif && l.bien_gere_id).map(l=>{
+    const b = _gMaps._bg.find(x=>x.id===l.bien_gere_id);
+    return { bien_gere_id:l.bien_gere_id, locataire_id:l.id, periode, montant_du:Number(b?.loyer_mensuel||0), montant_paye:0, statut:'impaye' };
+  });
+  if(!rows.length){ toast('Aucun locataire actif.'); return; }
+  try{
+    const { error } = await sb.from('loyers').upsert(rows, {onConflict:'bien_gere_id,periode', ignoreDuplicates:true});
+    if(error) throw error;
+    toast('Loyers du mois générés.'); adminGestion($('#adminMain'));
+  }catch(err){ toast('Action impossible : '+(err.message||'erreur')); }
+}
+
+/* ---------------- Gestion des terrains ---------------- */
+const ENTITY_MEDIA = {
+  terrain:{table:'terrain_media', fk:'terrain_id', folder:'terrains'},
+  bien:{table:'bien_media', fk:'bien_id', folder:'biens'},
+};
+function optionsHTML(map, sel){ return Object.entries(map).map(([k,v])=>`<option value="${k}" ${k===sel?'selected':''}>${v}</option>`).join(''); }
+
+async function quickStatus(table, id, value, reload){
+  try{
+    const { error } = await sb.from(table).update({status:value}).eq('id', id);
+    if(error) throw error;
+    toast('Statut mis à jour.'); reload();
+  }catch(err){ toast('Action impossible : '+(err.message||'erreur')); }
+}
+
+async function adminTerrains(main){
+  const rows = await sbSelect('terrains', {order:{col:'created_at', asc:false}});
+  rows.forEach(r=>window._ttl[r.id]=r.title);
+  main.innerHTML = `
+    <div class="admin-toolbar">
+      <h2 style="margin:0;">Terrains (${rows.length})</h2>
+      <button class="btn btn-primary btn-sm" id="addTerrainBtn">+ Ajouter un terrain</button>
+    </div>
+    <div class="admin-panel">
+      ${rows.length ? `<table class="data-table"><thead><tr><th></th><th>Titre</th><th>Localisation</th><th>Superficie</th><th>Prix</th><th>Statut</th><th></th></tr></thead>
+      <tbody>${rows.map(t=>`
+        <tr>
+          <td><img class="thumb-sm" src="${esc(t.cover_url||'')}"></td>
+          <td>${esc(t.title)}</td><td>${esc(t.location||'')}</td><td>${esc(t.superficie||'')}</td><td>${esc(t.price||'')}</td>
+          <td><select onchange="quickStatus('terrains','${t.id}',this.value,()=>adminTerrains($('#adminMain')))">${optionsHTML(TERRAIN_STATUS, t.status)}</select></td>
+          <td class="row-actions">
+            <button class="icon-btn" title="Photos / vidéos" onclick="openEntityMedia('terrain','${t.id}')">▤</button>
+            <button class="icon-btn" title="Documents PDF" onclick="openTerrainDocs('${t.id}')">📄</button>
+            <button class="icon-btn" onclick="openTerrainModal('${t.id}')">✎</button>
+            <button class="icon-btn" onclick="deleteRow('terrains','${t.id}', ()=>adminTerrains($('#adminMain')))">🗑</button>
+          </td>
+        </tr>`).join('')}</tbody></table>` : emptyStateHTML('Aucun terrain. Ajoutez le premier terrain du catalogue.')}
+    </div>
+    ${modalShellHTML('terrainModal', 'Terrain', `
+      <input type="hidden" id="terrainId">
+      <div class="field"><label>Titre *</label><input id="terrainTitle" required></div>
+      <div class="field"><label>Description</label><textarea id="terrainDesc" rows="3"></textarea></div>
+      <div class="field-row">
+        <div class="field"><label>Localisation *</label><input id="terrainLoc" required></div>
+        <div class="field"><label>Superficie (ex : 600 m²)</label><input id="terrainSurf"></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Prix (ex : 18 000 000 FCFA)</label><input id="terrainPrice"></div>
+        <div class="field"><label>Statut</label><select id="terrainStatus">${optionsHTML(TERRAIN_STATUS,'disponible')}</select></div>
+      </div>
+      <div class="field"><label>Photo de couverture</label><input type="file" id="terrainCover" accept="image/*"></div>`)}
+    ${modalShellHTML('entityMediaModal', 'Photos & vidéos', `
+      <input type="hidden" id="emKind"><input type="hidden" id="emId">
+      <div class="field"><label>Ajouter photos / vidéos (sélection multiple)</label><input type="file" id="emFiles" accept="image/*,video/*" multiple></div>
+      <button class="btn btn-primary btn-sm" type="button" onclick="uploadEntityMedia()">Téléverser</button>
+      <div id="emList" style="margin-top:24px; display:grid; grid-template-columns:repeat(4,1fr); gap:10px;"></div>`, true)}
+    ${modalShellHTML('terrainDocsModal', 'Documents', `
+      <input type="hidden" id="tdId">
+      <div class="field"><label>Ajouter des documents PDF</label><input type="file" id="tdFiles" accept="application/pdf" multiple></div>
+      <button class="btn btn-primary btn-sm" type="button" onclick="uploadTerrainDocs()">Téléverser</button>
+      <ul id="tdList" style="margin-top:20px; list-style:none;"></ul>`, true)}
+  `;
+  $('#addTerrainBtn').addEventListener('click', ()=>openTerrainModal());
+}
+function openTerrainModal(id){
+  $('#terrainModal').classList.add('open');
+  ['terrainId','terrainTitle','terrainDesc','terrainLoc','terrainSurf','terrainPrice'].forEach(i=>$('#'+i).value='');
+  $('#terrainStatus').value='disponible'; $('#terrainCover').value='';
+  $('#terrainId').value = id || '';
+  if(id) sbSelect('terrains',{eq:{id}}).then(r=>{ const t=r[0]; if(!t) return;
+    $('#terrainTitle').value=t.title; $('#terrainDesc').value=t.description||''; $('#terrainLoc').value=t.location||'';
+    $('#terrainSurf').value=t.superficie||''; $('#terrainPrice').value=t.price||''; $('#terrainStatus').value=t.status||'disponible'; });
+}
+async function uploadToBucket(bucket, folder, file){
+  const safe = file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+  const path = `${folder}/${Date.now()}-${safe}`;
+  const { error } = await sb.storage.from(bucket).upload(path, file, {upsert:true});
+  if(error) throw error;
+  return sb.storage.from(bucket).getPublicUrl(path).data.publicUrl;
+}
+async function submitTerrainForm(){
+  const id = $('#terrainId').value;
+  const payload = { title:$('#terrainTitle').value.trim(), description:$('#terrainDesc').value.trim(), location:$('#terrainLoc').value.trim(),
+    superficie:$('#terrainSurf').value.trim(), price:$('#terrainPrice').value.trim(), status:$('#terrainStatus').value };
+  try{
+    const f = $('#terrainCover').files[0];
+    if(f) payload.cover_url = await uploadToBucket('media','terrains/covers',f);
+    const { error } = id ? await sb.from('terrains').update(payload).eq('id',id) : await sb.from('terrains').insert(payload);
+    if(error) throw error;
+    toast(id?'Terrain mis à jour.':'Terrain ajouté.'); closeModal('terrainModal'); adminTerrains($('#adminMain'));
+  }catch(err){ toast('Action impossible : '+(err.message||'erreur')); }
+}
+
+/* Médias génériques (terrains + biens) */
+window._ttl = window._ttl || {};
+async function openEntityMedia(kind, id, title){
+  title = title || window._ttl[id] || '';
+  $('#entityMediaModal').classList.add('open');
+  $('#entityMediaModal h3').textContent = 'Médias — '+title;
+  $('#emKind').value = kind; $('#emId').value = id;
+  refreshEntityMedia();
+}
+async function refreshEntityMedia(){
+  const c = ENTITY_MEDIA[$('#emKind').value], id = $('#emId').value;
+  const items = await sbSelect(c.table, {eq:{[c.fk]:id}});
+  $('#emList').innerHTML = items.length ? items.map(m=>`
+    <div style="position:relative;">
+      ${m.type==='video' ? `<video src="${esc(m.url)}" style="width:100%;aspect-ratio:1;object-fit:cover;"></video>` : `<img src="${esc(m.url)}" style="width:100%;aspect-ratio:1;object-fit:cover;">`}
+      <button class="icon-btn" style="position:absolute;top:4px;right:4px;background:#fff;" onclick="deleteRow('${c.table}','${m.id}', refreshEntityMedia)">🗑</button>
+    </div>`).join('') : `<p style="grid-column:1/-1; font-size:.85rem; color:#7c8874;">Aucun média.</p>`;
+}
+async function uploadEntityMedia(){
+  const c = ENTITY_MEDIA[$('#emKind').value], id = $('#emId').value;
+  const files = $('#emFiles').files;
+  if(!files.length) return;
+  toast(`Téléversement de ${files.length} fichier(s)…`);
+  try{
+    for(const file of files){
+      const url = await uploadToBucket('media', `${c.folder}/${id}`, file);
+      const { error } = await sb.from(c.table).insert({ [c.fk]:id, url, type: file.type.startsWith('video')?'video':'photo' });
+      if(error) throw error;
+    }
+    toast('Médias ajoutés.');
+  }catch(err){ toast('Téléversement impossible : '+(err.message||'erreur')); }
+  $('#emFiles').value=''; refreshEntityMedia();
+}
+
+/* Documents PDF des terrains */
+async function openTerrainDocs(id, title){
+  title = title || window._ttl[id] || '';
+  $('#terrainDocsModal').classList.add('open');
+  $('#terrainDocsModal h3').textContent = 'Documents — '+title;
+  $('#tdId').value = id; refreshTerrainDocs();
+}
+async function refreshTerrainDocs(){
+  const docs = await sbSelect('terrain_documents', {eq:{terrain_id:$('#tdId').value}});
+  $('#tdList').innerHTML = docs.length ? docs.map(d=>`
+    <li style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--line);">
+      <a href="${esc(d.url)}" target="_blank" rel="noopener">📄 ${esc(d.label||'Document')}</a>
+      <button class="icon-btn" onclick="deleteRow('terrain_documents','${d.id}', refreshTerrainDocs)">🗑</button>
+    </li>`).join('') : '<li style="color:#7c8874; font-size:.85rem;">Aucun document.</li>';
+}
+async function uploadTerrainDocs(){
+  const id = $('#tdId').value, files = $('#tdFiles').files;
+  if(!files.length) return;
+  toast('Téléversement…');
+  try{
+    for(const file of files){
+      const url = await uploadToBucket('documents', `terrains/${id}`, file);
+      const { error } = await sb.from('terrain_documents').insert({ terrain_id:id, url, label:file.name });
+      if(error) throw error;
+    }
+    toast('Documents ajoutés.');
+  }catch(err){ toast('Téléversement impossible : '+(err.message||'erreur')); }
+  $('#tdFiles').value=''; refreshTerrainDocs();
+}
+
+/* ---------------- Gestion des biens immobiliers ---------------- */
+async function adminBiens(main){
+  const rows = await sbSelect('biens_immobiliers', {order:{col:'created_at', asc:false}});
+  window._ttl = window._ttl || {}; rows.forEach(r=>window._ttl[r.id]=r.title);
+  main.innerHTML = `
+    <div class="admin-toolbar">
+      <h2 style="margin:0;">Biens immobiliers (${rows.length})</h2>
+      <button class="btn btn-primary btn-sm" id="addBienBtn">+ Ajouter un bien</button>
+    </div>
+    <div class="admin-panel">
+      ${rows.length ? `<table class="data-table"><thead><tr><th></th><th>Titre</th><th>Type</th><th>Mode</th><th>Prix</th><th>Statut</th><th></th></tr></thead>
+      <tbody>${rows.map(b=>`
+        <tr>
+          <td><img class="thumb-sm" src="${esc(b.cover_url||'')}"></td>
+          <td>${esc(b.title)}<br><small>${esc(b.location||'')}</small></td><td>${esc(BIEN_TYPES[b.type]||b.type)}</td><td>${esc(BIEN_MODES[b.mode]||b.mode)}</td><td>${esc(b.price||'')}</td>
+          <td><select onchange="quickStatus('biens_immobiliers','${b.id}',this.value,()=>adminBiens($('#adminMain')))">${optionsHTML(BIEN_STATUS, b.status)}</select></td>
+          <td class="row-actions">
+            <button class="icon-btn" title="Photos / vidéos" onclick="openEntityMedia('bien','${b.id}')">▤</button>
+            <button class="icon-btn" onclick="openBienModal('${b.id}')">✎</button>
+            <button class="icon-btn" onclick="deleteRow('biens_immobiliers','${b.id}', ()=>adminBiens($('#adminMain')))">🗑</button>
+          </td>
+        </tr>`).join('')}</tbody></table>` : emptyStateHTML('Aucun bien. Ajoutez le premier bien du catalogue.')}
+    </div>
+    ${modalShellHTML('bienModal', 'Bien immobilier', `
+      <input type="hidden" id="bienId">
+      <div class="field-row">
+        <div class="field"><label>Type *</label><select id="bienType">${optionsHTML(BIEN_TYPES,'maison')}</select></div>
+        <div class="field"><label>Mode *</label><select id="bienMode">${optionsHTML(BIEN_MODES,'vente')}</select></div>
+      </div>
+      <div class="field"><label>Titre *</label><input id="bienTitle" required></div>
+      <div class="field"><label>Description</label><textarea id="bienDesc" rows="3"></textarea></div>
+      <div class="field-row">
+        <div class="field"><label>Localisation *</label><input id="bienLoc" required></div>
+        <div class="field"><label>Prix (ex : 350 000 FCFA / mois)</label><input id="bienPrice"></div>
+      </div>
+      <div class="field"><label>Statut</label><select id="bienStatus">${optionsHTML(BIEN_STATUS,'disponible')}</select></div>
+      <div class="field"><label>Photo de couverture</label><input type="file" id="bienCover" accept="image/*"></div>`)}
+    ${modalShellHTML('entityMediaModal', 'Photos & vidéos', `
+      <input type="hidden" id="emKind"><input type="hidden" id="emId">
+      <div class="field"><label>Ajouter photos / vidéos (sélection multiple)</label><input type="file" id="emFiles" accept="image/*,video/*" multiple></div>
+      <button class="btn btn-primary btn-sm" type="button" onclick="uploadEntityMedia()">Téléverser</button>
+      <div id="emList" style="margin-top:24px; display:grid; grid-template-columns:repeat(4,1fr); gap:10px;"></div>`, true)}
+  `;
+  $('#addBienBtn').addEventListener('click', ()=>openBienModal());
+}
+function openBienModal(id){
+  $('#bienModal').classList.add('open');
+  ['bienId','bienTitle','bienDesc','bienLoc','bienPrice'].forEach(i=>$('#'+i).value='');
+  $('#bienType').value='maison'; $('#bienMode').value='vente'; $('#bienStatus').value='disponible'; $('#bienCover').value='';
+  $('#bienId').value = id || '';
+  if(id) sbSelect('biens_immobiliers',{eq:{id}}).then(r=>{ const b=r[0]; if(!b) return;
+    $('#bienType').value=b.type; $('#bienMode').value=b.mode; $('#bienTitle').value=b.title; $('#bienDesc').value=b.description||'';
+    $('#bienLoc').value=b.location||''; $('#bienPrice').value=b.price||''; $('#bienStatus').value=b.status||'disponible'; });
+}
+async function submitBienForm(){
+  const id = $('#bienId').value;
+  const payload = { type:$('#bienType').value, mode:$('#bienMode').value, title:$('#bienTitle').value.trim(), description:$('#bienDesc').value.trim(),
+    location:$('#bienLoc').value.trim(), price:$('#bienPrice').value.trim(), status:$('#bienStatus').value };
+  try{
+    const f = $('#bienCover').files[0];
+    if(f) payload.cover_url = await uploadToBucket('media','biens/covers',f);
+    const { error } = id ? await sb.from('biens_immobiliers').update(payload).eq('id',id) : await sb.from('biens_immobiliers').insert(payload);
+    if(error) throw error;
+    toast(id?'Bien mis à jour.':'Bien ajouté.'); closeModal('bienModal'); adminBiens($('#adminMain'));
+  }catch(err){ toast('Action impossible : '+(err.message||'erreur')); }
 }
 
 /* ---------------- Chiffres clés (À propos) ---------------- */
@@ -1533,7 +2329,7 @@ async function submitStatForm(){
 
 /* ---------------- Helpers admin génériques ---------------- */
 function modalShellHTML(id, title, formHTML, isMediaModal, isViewOnly){
-  const submitFn = {teamModal:'submitTeamForm', albumModal:'submitAlbumForm', statModal:'submitStatForm'}[id];
+  const submitFn = {teamModal:'submitTeamForm', albumModal:'submitAlbumForm', statModal:'submitStatForm', terrainModal:'submitTerrainForm', bienModal:'submitBienForm'}[id];
   return `
   <div class="modal-overlay" id="${id}">
     <div class="modal-box">
