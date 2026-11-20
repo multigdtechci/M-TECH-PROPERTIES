@@ -138,7 +138,7 @@ nav.main-nav a:hover::after, nav.main-nav a.active::after{width:100%;}
 .burger{display:none; width:40px; height:40px; align-items:center; justify-content:center;}
 .burger span, .burger span::before, .burger span::after{content:''; display:block; width:20px; height:2px; background:var(--green-ink); position:relative; transition:.25s;}
 .burger span::before{position:absolute; top:-6px;} .burger span::after{position:absolute; top:6px;}
-@media (max-width:960px){
+@media (max-width:1280px){
   nav.main-nav{position:fixed; inset:64px 0 0 0; background:var(--cream); flex-direction:column; padding:30px 28px;
     transform:translateX(100%); transition:transform .3s ease; overflow-y:auto;}
   nav.main-nav.open{transform:translateX(0);}
@@ -338,7 +338,7 @@ footer.site{background:var(--green-ink); color:var(--cream);}
 /* ---------- Corrections mobile ---------- */
 .hero .eyebrow{color:var(--gold-light); text-shadow:0 1px 8px rgba(0,0,0,.55);}
 .footer-top a,.footer-top p{overflow-wrap:anywhere;}
-@media (max-width:960px){
+@media (max-width:1280px){
   .nav-row{padding:10px 16px; min-height:64px;}
   .logo{gap:8px;}
   .logo-mark{width:40px; height:40px;}
@@ -357,7 +357,7 @@ footer.site{background:var(--green-ink); color:var(--cream);}
 }
 
 /* ---------- Menu mobile : panneau déroulant à droite sous le burger ---------- */
-@media (max-width:960px){
+@media (max-width:1280px){
   nav.main-nav{
     position:absolute; inset:auto; top:calc(100% + 8px); right:14px; left:auto; bottom:auto;
     width:min(78vw,300px); height:auto; max-height:calc(100vh - 110px); overflow-y:auto;
@@ -380,7 +380,7 @@ footer.site{background:var(--green-ink); color:var(--cream);}
 nav.main-nav .submenu a{display:block; font-size:.9rem; font-weight:500; white-space:nowrap;}
 nav.main-nav .submenu a::after{display:none;}
 nav.main-nav .submenu a.active{color:var(--green); font-weight:600;}
-@media (min-width:961px){
+@media (min-width:1281px){
   .submenu{position:absolute; top:100%; left:-14px; min-width:250px; margin-top:12px; padding:8px 0;
     background:var(--cream); border:1px solid var(--line); border-radius:8px; box-shadow:0 20px 40px -12px rgba(28,42,23,.3);
     opacity:0; visibility:hidden; transform:translateY(-6px); transition:opacity .2s ease, transform .2s ease, visibility .2s ease; z-index:50;}
@@ -389,7 +389,7 @@ nav.main-nav .submenu a.active{color:var(--green); font-weight:600;}
   nav.main-nav .submenu a{padding:10px 20px;}
   nav.main-nav .submenu a:hover{background:var(--cream-deep); color:var(--green-dark);}
 }
-@media (max-width:960px){
+@media (max-width:1280px){
   .nav-item{flex-wrap:wrap; width:100%; border-bottom:1px solid var(--line);}
   .nav-item > a{flex:1; width:auto; border-bottom:none;}
   .sub-toggle{width:44px; height:44px; border-radius:6px;}
@@ -397,6 +397,87 @@ nav.main-nav .submenu a.active{color:var(--green); font-weight:600;}
   .nav-item.open .submenu{max-height:420px; padding-bottom:8px;}
   nav.main-nav .submenu a{padding:10px 0 10px 14px; border-bottom:none; color:var(--green-dark); width:100%;}
 }
+
+/* ---------- Organigramme ---------- */
+.org-scroll{overflow-x:auto; padding:10px 0 30px;}
+.org-tree,.org-tree ul{list-style:none; margin:0; padding:0; display:flex; justify-content:center; position:relative;}
+.org-tree{width:max-content; min-width:100%;}
+.org-tree ul{padding-top:26px;}
+.org-tree li{position:relative; padding:26px 8px 0; display:flex; flex-direction:column; align-items:center;}
+.org-tree > li{padding-top:0;}
+.org-tree li::before,.org-tree li::after{content:''; position:absolute; top:0; right:50%; width:50%; height:26px; border-top:2px solid #c9d6c1;}
+.org-tree li::after{right:auto; left:50%; border-left:2px solid #c9d6c1;}
+.org-tree > li::before,.org-tree > li::after{display:none;}
+.org-tree li:only-child::before,.org-tree li:only-child::after{display:none;}
+.org-tree li:only-child{padding-top:0;}
+.org-tree li:first-child::before,.org-tree li:last-child::after{border:0 none;}
+.org-tree li:last-child::before{border-right:2px solid #c9d6c1; border-radius:0 6px 0 0;}
+.org-tree li:first-child::after{border-radius:6px 0 0 0;}
+.org-tree ul::before{content:''; position:absolute; top:0; left:50%; border-left:2px solid #c9d6c1; height:26px;}
+.org-node{background:var(--white); border:1px solid var(--line); border-top:3px solid var(--green); border-radius:6px; padding:12px 10px; width:176px; text-align:center; position:relative; box-shadow:0 8px 20px -14px rgba(28,42,23,.5);}
+.org-tree > li > .org-node{border-top-color:var(--gold); width:210px;}
+.org-photo{width:54px; height:54px; border-radius:50%; background:var(--cream-deep) center/cover no-repeat; margin:0 auto 8px; border:2px solid var(--cream-deep); overflow:hidden;}
+.org-photo img{width:100%; height:100%; object-fit:cover;}
+.org-node h4{font-family:var(--font-body); font-size:.86rem; font-weight:600; line-height:1.25;}
+.org-node .role{font-family:var(--font-mono); font-size:.64rem; text-transform:uppercase; letter-spacing:.03em; color:var(--green); margin-top:4px;}
+.org-node .dept{display:inline-block; margin-top:7px; font-size:.68rem; padding:2px 9px; border-radius:999px; background:var(--cream-deep); color:var(--green-dark);}
+.org-toggle{margin-top:9px; font-family:var(--font-mono); font-size:.66rem; border:1px solid var(--line); border-radius:999px; padding:3px 11px; background:var(--cream);}
+.org-toggle:hover{border-color:var(--gold);}
+.org-tree li.collapsed > ul{display:none;}
+.org-tree li.collapsed > .org-node .org-toggle .chev{transform:rotate(-90deg);}
+.org-toggle .chev{display:inline-block; transition:transform .2s;}
+@media (max-width:900px){
+  .org-scroll{overflow:visible;}
+  .org-tree,.org-tree ul{display:block; width:auto; min-width:0; padding-top:0;}
+  .org-tree ul{margin-left:14px; padding-left:12px; border-left:2px solid #c9d6c1;}
+  .org-tree ul::before,.org-tree li::before,.org-tree li::after{display:none;}
+  .org-tree li,.org-tree > li{display:block; padding:10px 0 0;}
+  .org-node,.org-tree > li > .org-node{width:100%; text-align:left; display:grid; grid-template-columns:54px 1fr auto; gap:0 12px; align-items:center;}
+  .org-photo{margin:0; grid-row:1 / span 3;}
+  .org-node .dept{justify-self:start;}
+  .org-toggle{grid-column:3; grid-row:1 / span 3; margin:0;}
+}
+
+/* ---------- Actualités ---------- */
+.news-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+@media(max-width:900px){.news-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.news-grid{grid-template-columns:1fr;}}
+.news-card{background:var(--white); border:1px solid var(--line); display:flex; flex-direction:column; transition:transform .3s ease, box-shadow .3s ease;}
+.news-card:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
+.news-card .cover{aspect-ratio:16/10; background:var(--cream-deep); overflow:hidden;}
+.news-card .cover img{width:100%; height:100%; object-fit:cover;}
+.news-card .body{padding:20px 22px 24px; display:flex; flex-direction:column; gap:10px; flex:1;}
+.news-card h3{font-size:1.15rem;}
+.news-card .date{font-family:var(--font-mono); font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--gold);}
+.news-card p{font-size:.9rem;}
+.news-card .more{margin-top:auto; font-family:var(--font-mono); font-size:.74rem; text-transform:uppercase; letter-spacing:.06em; color:var(--green-dark);}
+.rich{max-width:760px; margin:0 auto; font-size:1.05rem; line-height:1.8;}
+.rich p{margin-bottom:1.1em;} .rich h2,.rich h3{margin:1.4em 0 .6em;}
+.rich ul,.rich ol{margin:0 0 1.1em 1.4em;} .rich a{color:var(--green-dark); text-decoration:underline;}
+.news-cover-full{max-width:900px; margin:0 auto 40px; aspect-ratio:16/8; background:var(--cream-deep); overflow:hidden;}
+.news-cover-full img{width:100%; height:100%; object-fit:cover;}
+
+/* ---------- Éditeur riche (admin) ---------- */
+.rte-bar{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;}
+.rte-bar button{border:1px solid var(--line); background:var(--white); min-width:34px; height:34px; padding:0 10px; border-radius:4px; font-size:.85rem;}
+.rte-bar button:hover{border-color:var(--gold); background:var(--cream);}
+.rte-area{min-height:200px; max-height:380px; overflow-y:auto; border:1px solid var(--line); border-radius:4px; background:var(--cream); padding:14px; line-height:1.7;}
+.rte-area:focus{outline:none; border-color:var(--gold); background:var(--white);}
+.rte-area ul,.rte-area ol{margin-left:1.4em;} .rte-area a{color:var(--green-dark); text-decoration:underline;}
+
+/* ---------- Dashboard stats ---------- */
+.stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-bottom:28px;}
+@media(max-width:1100px){.stat-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.stat-grid{grid-template-columns:1fr;}}
+.stat-card{background:var(--white); border:1px solid var(--line); padding:22px; position:relative;}
+.stat-card .ico{width:42px; height:42px; border-radius:50%; background:var(--cream-deep); color:var(--green); display:flex; align-items:center; justify-content:center; font-size:1.15rem; margin-bottom:14px;}
+.stat-card.gold .ico{background:#fbeecb; color:#8a5e12;}
+.stat-card .big{font-family:var(--font-display); font-size:2.3rem; line-height:1; color:var(--green-ink);}
+.stat-card .lbl{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.05em; color:#7c8874; margin-top:8px;}
+.stat-card .split{display:flex; flex-wrap:wrap; gap:6px 12px; margin-top:14px; padding-top:12px; border-top:1px solid var(--line); font-size:.78rem; color:#5d6c57;}
+.stat-card .split b{color:var(--green-dark);}
+.stat-card .bar{display:flex; height:6px; margin-top:12px; border-radius:3px; overflow:hidden; background:var(--cream-deep);}
+.stat-card .bar i{display:block; height:100%;}
 </style>
 </head>
 <body>
@@ -417,7 +498,12 @@ nav.main-nav .submenu a.active{color:var(--green); font-weight:600;}
       </div>
       <a href="#/projects" data-route="/projects">Projets</a>
       <a href="#/gallery" data-route="/gallery">Galerie</a>
-      <a href="#/team" data-route="/team">Équipe</a>
+      <a href="#/actualites" data-route="/actualites">Actualités</a>
+      <div class="nav-item has-sub">
+        <a href="#/team" data-route="/team">Équipe</a>
+        <button class="sub-toggle" type="button" aria-label="Afficher le sous-menu" aria-expanded="false"><svg viewBox="0 0 12 8" width="12" height="8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="submenu"><a href="#/team" data-route="/team">Notre équipe</a><a href="#/organisation" data-route="/organisation">Notre organisation</a></div>
+      </div>
       <a href="#/contact" data-route="/contact">Contact</a>
     </nav>
     <div class="nav-cta">
@@ -450,6 +536,8 @@ nav.main-nav .submenu a.active{color:var(--green); font-weight:600;}
         <li><a href="#/services">Nos services</a></li>
         <li><a href="#/projects">Nos projets</a></li>
         <li><a href="#/team">Notre équipe</a></li>
+        <li><a href="#/organisation">Notre organisation</a></li>
+        <li><a href="#/actualites">Actualités</a></li>
       </ul>
     </div>
     <div>
@@ -618,6 +706,8 @@ const routes = {
   "/contact": pageContact,
   "/terrains": pageTerrains,
   "/immobilier": pageImmobilier,
+  "/organisation": pageOrganisation,
+  "/actualites": pageActualites,
   "/admin/login": pageAdminLogin,
 };
 
@@ -636,6 +726,7 @@ async function router(){
   const domainMatch = hash.match(/^\/services\/([a-z-]+)$/);
   const terrainMatch = hash.match(/^\/terrains\/([a-zA-Z0-9-]+)$/);
   const bienMatch = hash.match(/^\/immobilier\/([a-zA-Z0-9-]+)$/);
+  const newsMatch = hash.match(/^\/actualites\/([a-zA-Z0-9-]+)$/);
   // Admin pages
   if(hash.startsWith('/admin')){
     return renderAdmin(hash, app);
@@ -649,6 +740,7 @@ async function router(){
   }
   if(terrainMatch){ await pageTerrainDetail(app, terrainMatch[1]); return revealOnScroll(); }
   if(bienMatch){ await pageImmobilierDetail(app, bienMatch[1]); return revealOnScroll(); }
+  if(newsMatch){ await pageActualiteDetail(app, newsMatch[1]); return revealOnScroll(); }
   const fn = routes[hash] || page404;
   await fn(app);
   revealOnScroll();
@@ -675,11 +767,13 @@ function closeMobileNav(){
 }
 function renderNavSub(){
   $('#navSub').innerHTML = DOMAINS.map(d=>`<a href="#/services/${d.slug}" data-route="/services/${d.slug}">${esc(d.name)}</a>`).join('');
-  const item = $('#navServices'), btn = item.querySelector('.sub-toggle');
-  btn.addEventListener('click', e=>{
-    e.stopPropagation();
-    const open = item.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  $all('.nav-item.has-sub').forEach(item=>{
+    const btn = item.querySelector('.sub-toggle');
+    btn.addEventListener('click', e=>{
+      e.stopPropagation();
+      const open = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
   });
 }
 // Ferme le menu mobile au clic en dehors du panneau
@@ -1082,6 +1176,7 @@ async function pageTeam(app){
       <div class="team-grid reveal" id="teamGrid">
         ${team.length ? team.map(teamCardHTML).join('') : emptyStateHTML("Aucun membre publié pour le moment.")}
       </div>
+      <div style="text-align:center; margin-top:40px;"><a href="#/organisation" class="btn btn-outline">Voir l'organigramme →</a></div>
     </div>
   </section>
   `;
@@ -1435,6 +1530,130 @@ async function pageImmobilierDetail(app, id){
   </div></section>`;
 }
 
+/* =========================================================================
+   PAGE : NOTRE ORGANISATION (organigramme généré depuis la table "team")
+   ========================================================================= */
+function orgNodeHTML(m, kidsCount, depth){
+  const role = m.poste_hierarchique || m.position || '';
+  const collapsedByDefault = kidsCount && (depth >= 3 || (window.innerWidth <= 900 && depth >= 1));
+  return `<div class="org-node">
+    <div class="org-photo">${m.photo_url ? `<img src="${esc(m.photo_url)}" alt="" loading="lazy" decoding="async">` : ''}</div>
+    <h4>${esc(m.name)}</h4>
+    <div class="role">${esc(role)}</div>
+    ${m.department ? `<span class="dept">${esc(m.department)}</span>` : ''}
+    ${kidsCount ? `<button class="org-toggle" type="button" data-id="${esc(m.id)}" aria-expanded="${collapsedByDefault ? 'false' : 'true'}"><span class="chev">▾</span> ${kidsCount}</button>` : ''}
+  </div>`;
+}
+function orgBranchHTML(m, ctx, depth){
+  const kids = ctx.children[m.id] || [];
+  // rendu différé : au-delà de 3 niveaux (ou sur mobile dès le niveau 2), les sous-arbres sont créés au clic
+  const lazy = kids.length && (depth >= 3 || (window.innerWidth <= 900 && depth >= 1));
+  return `<li data-id="${esc(m.id)}" data-depth="${depth}" class="${lazy ? 'collapsed' : ''}">
+    ${orgNodeHTML(m, kids.length, depth)}
+    ${kids.length && !lazy ? `<ul>${kids.map(k=>orgBranchHTML(k, ctx, depth+1)).join('')}</ul>` : ''}
+  </li>`;
+}
+async function pageOrganisation(app){
+  setSEO("Notre organisation", "L'organigramme de M-Tech Properties Ltd : direction, opérations et départements.");
+  const members = await sbSelect('team', {order:{col:'name'}});
+  const byId = Object.fromEntries(members.map(m=>[m.id, m]));
+  const ctx = { children:{}, byId };
+  const roots = [];
+  members.forEach(m=>{
+    if(m.superieur_id && byId[m.superieur_id] && m.superieur_id !== m.id){
+      (ctx.children[m.superieur_id] = ctx.children[m.superieur_id] || []).push(m);
+    } else roots.push(m);
+  });
+  app.innerHTML = `
+  ${pageBannerHTML("Notre organisation", "De la direction générale aux départements : qui fait quoi chez M-Tech Properties.")}
+  <section><div class="wrap">
+    ${roots.length ? `<div class="org-scroll reveal"><ul class="org-tree" id="orgTree">${roots.map(r=>orgBranchHTML(r, ctx, 0)).join('')}</ul></div>
+      <p style="text-align:center; font-size:.85rem; color:#7c8874; margin-top:10px;">Touchez le bouton d'un membre pour déplier ou replier son équipe.</p>`
+      : emptyStateHTML("L'organigramme sera bientôt disponible.")}
+    <div style="text-align:center; margin-top:34px;"><a href="#/team" class="btn btn-outline">Voir toute l'équipe →</a></div>
+  </div></section>`;
+  const tree = $('#orgTree'); if(!tree) return;
+  tree.addEventListener('click', e=>{
+    const btn = e.target.closest('.org-toggle'); if(!btn) return;
+    const li = btn.closest('li');
+    const collapsed = li.classList.contains('collapsed');
+    if(collapsed && !li.querySelector(':scope > ul')){   // rendu à la demande
+      const m = byId[li.dataset.id], depth = Number(li.dataset.depth);
+      const ul = document.createElement('ul');
+      ul.innerHTML = (ctx.children[m.id] || []).map(k=>{
+        const kk = ctx.children[k.id] || [];
+        return `<li data-id="${esc(k.id)}" data-depth="${depth+1}" class="${kk.length ? 'collapsed' : ''}">${orgNodeHTML(k, kk.length, depth+1)}</li>`;
+      }).join('');
+      li.appendChild(ul);
+    }
+    li.classList.toggle('collapsed', !collapsed);
+    btn.setAttribute('aria-expanded', collapsed ? 'true' : 'false');
+  });
+}
+
+/* =========================================================================
+   PAGES : ACTUALITÉS (liste + détail)
+   ========================================================================= */
+const ALLOWED_TAGS = new Set(['P','BR','B','STRONG','I','EM','U','A','UL','OL','LI','H2','H3','DIV','SPAN']);
+function sanitizeHTML(dirty){
+  const doc = new DOMParser().parseFromString('<div>'+(dirty||'')+'</div>', 'text/html');
+  const walk = node => {
+    [...node.childNodes].forEach(ch=>{
+      if(ch.nodeType === 3) return;
+      if(ch.nodeType !== 1){ ch.remove(); return; }
+      if(!ALLOWED_TAGS.has(ch.tagName)){ walk(ch); ch.replaceWith(...ch.childNodes); return; }
+      [...ch.attributes].forEach(a=>{
+        if(!(ch.tagName==='A' && a.name==='href')) ch.removeAttribute(a.name);
+      });
+      if(ch.tagName==='A'){
+        const href = ch.getAttribute('href') || '';
+        if(!/^(https?:|mailto:|tel:)/i.test(href)) ch.removeAttribute('href');
+        ch.setAttribute('target','_blank'); ch.setAttribute('rel','noopener noreferrer');
+      }
+      walk(ch);
+    });
+  };
+  const root = doc.body.firstChild; walk(root);
+  return root.innerHTML;
+}
+function plainExcerpt(htmlStr, n=140){
+  const t = new DOMParser().parseFromString(htmlStr||'', 'text/html').body.textContent.replace(/\s+/g,' ').trim();
+  return t.length > n ? t.slice(0,n).trim() + '…' : t;
+}
+async function pageActualites(app){
+  setSEO("Actualités", "Les dernières nouvelles et annonces de M-Tech Properties Ltd.");
+  const rows = await sbSelect('actualites', {eq:{status:'publie'}, order:{col:'published_at', asc:false}});
+  app.innerHTML = `
+  ${pageBannerHTML("Actualités", "Projets, annonces et vie de l'entreprise.")}
+  <section><div class="wrap">
+    <div class="news-grid">
+      ${rows.length ? rows.map(a=>`
+        <a class="news-card reveal" href="#/actualites/${esc(a.id)}">
+          <div class="cover">${a.cover_url ? `<img src="${esc(a.cover_url)}" alt="" loading="lazy" decoding="async">` : ''}</div>
+          <div class="body">
+            <span class="date">${fmtDate(a.published_at)}</span>
+            <h3>${esc(a.title)}</h3>
+            <p>${esc(plainExcerpt(a.content))}</p>
+            <span class="more">Lire la suite →</span>
+          </div>
+        </a>`).join('') : emptyStateHTML("Aucune actualité publiée pour le moment.")}
+    </div>
+  </div></section>`;
+}
+async function pageActualiteDetail(app, id){
+  const rows = await sbSelect('actualites', {eq:{id, status:'publie'}});
+  const a = rows[0];
+  if(!a) return page404(app);
+  setSEO(a.title, plainExcerpt(a.content, 150));
+  app.innerHTML = `
+  ${pageBannerHTML(esc(a.title), fmtDate(a.published_at), `Actualités / ${a.title}`)}
+  <section><div class="wrap">
+    ${a.cover_url ? `<div class="news-cover-full"><img src="${esc(a.cover_url)}" alt="" decoding="async"></div>` : ''}
+    <article class="rich">${sanitizeHTML(a.content)}</article>
+    <div style="text-align:center; margin-top:44px;"><a href="#/actualites" class="btn btn-outline">← Toutes les actualités</a></div>
+  </div></section>`;
+}
+
 function page404(app){
   app.innerHTML = `<section style="padding-top:170px; text-align:center;"><h1>404</h1><p style="margin-top:12px;">Page introuvable.</p><a href="#/" class="btn btn-primary" style="margin-top:24px;">Retour à l'accueil</a></section>`;
 }
@@ -1521,6 +1740,7 @@ const ADMIN_NAV = [
   {key:'terrains', label:'Terrains', icon:'⌖'},
   {key:'gestion', label:'Gestion locative', icon:'⚑'},
   {key:'biens', label:'Biens immobiliers', icon:'⌂'},
+  {key:'actualites', label:'Actualités', icon:'✎'},
   {key:'messages', label:'Messages', icon:'✉'},
   {key:'requests', label:'Demandes de service', icon:'☎'},
   {key:'stats', label:'Chiffres clés', icon:'#'},
@@ -1530,6 +1750,7 @@ async function renderAdmin(hash, app){
   if(hash === '/admin/login'){ return pageAdminLogin(app); }
   if(!currentUser){ app.innerHTML = '<div class="spinner"></div>'; location.hash = '/admin/login'; return; }
 
+  clearInterval(window._statsTimer);
   const sub = hash.replace('/admin/dashboard', '').replace(/^\//,'') || 'dashboard';
   setSEO("Administration", "Espace administrateur M-Tech Properties Ltd.");
 
@@ -1550,6 +1771,7 @@ async function renderAdmin(hash, app){
   if(sub === 'terrains') return adminTerrains(main);
   if(sub === 'gestion') return adminGestion(main);
   if(sub === 'biens') return adminBiens(main);
+  if(sub === 'actualites') return adminActualites(main);
   if(sub === 'messages') return adminMessages(main);
   if(sub === 'requests') return adminRequests(main);
   if(sub === 'stats') return adminStats(main);
@@ -1557,47 +1779,99 @@ async function renderAdmin(hash, app){
 }
 
 /* ---------------- Vue d'ensemble ---------------- */
-async function adminOverview(main){
-  const [team, albums, contacts, requests] = await Promise.all([
-    sbSelect('team'), sbSelect('albums'), sbSelect('contacts'), sbSelect('service_requests'),
+/* ---------------- Dashboard : statistiques en temps réel (requêtes count) ---------------- */
+async function cnt(table, filter){
+  try{
+    let q = sb.from(table).select('*', {count:'exact', head:true});
+    if(filter) Object.entries(filter).forEach(([k,v])=>{ q = q.eq(k, v); });
+    const { count, error } = await q;
+    if(error) throw error;
+    return count || 0;
+  }catch(e){ return 0; }
+}
+function barHTML(segs){
+  const tot = segs.reduce((s,x)=>s+x.v,0);
+  if(!tot) return '';
+  return `<div class="bar">${segs.map(x=>`<i style="width:${(x.v/tot*100).toFixed(1)}%; background:${x.c};"></i>`).join('')}</div>`;
+}
+function statCardHTML({ico, big, lbl, split, bar, gold}){
+  return `<div class="stat-card ${gold?'gold':''}">
+    <div class="ico">${ico}</div><div class="big">${big}</div><div class="lbl">${lbl}</div>
+    ${bar ? barHTML(bar) : ''}
+    ${split ? `<div class="split">${split.map(([k,v])=>`<span>${k} <b>${v}</b></span>`).join('')}</div>` : ''}
+  </div>`;
+}
+async function loadStats(){
+  const grid = $('#statGrid'); if(!grid){ clearInterval(window._statsTimer); return; }
+  const [tAll,tDisp,tRes,tSold, bVente,bLoc, albums, pPh,pVid, tPh,tVid, bPh,bVid, team,
+         rAll,rNew,rProg,rDone, unread, nPub,nDraft] = await Promise.all([
+    cnt('terrains'), cnt('terrains',{status:'disponible'}), cnt('terrains',{status:'reserve'}), cnt('terrains',{status:'vendu'}),
+    cnt('biens_immobiliers',{mode:'vente'}), cnt('biens_immobiliers',{mode:'location'}),
+    cnt('albums'),
+    cnt('media',{type:'photo'}), cnt('media',{type:'video'}),
+    cnt('terrain_media',{type:'photo'}), cnt('terrain_media',{type:'video'}),
+    cnt('bien_media',{type:'photo'}), cnt('bien_media',{type:'video'}),
+    cnt('team'),
+    cnt('service_requests'), cnt('service_requests',{status:'nouveau'}), cnt('service_requests',{status:'en_cours'}), cnt('service_requests',{status:'traite'}),
+    cnt('contacts',{is_read:false}),
+    cnt('actualites',{status:'publie'}), cnt('actualites',{status:'brouillon'}),
   ]);
-  const unread = contacts.filter(c=>!c.is_read).length;
-  const pending = requests.filter(r=>r.status==='nouveau' || r.status==='pending').length;
+  const biens = bVente + bLoc, photos = pPh+tPh+bPh, videos = pVid+tVid+bVid;
+  const G='#4a7c3c', Y='#e0a52c', S='#9aa394';
+  grid.innerHTML = [
+    statCardHTML({ico:'▦', big:tAll+biens+albums, lbl:'Projets au total', split:[['Terrains',tAll],['Biens',biens],['Albums',albums]]}),
+    statCardHTML({ico:'⌖', big:tAll, lbl:'Terrains', bar:[{v:tDisp,c:G},{v:tRes,c:Y},{v:tSold,c:S}], split:[['Disponibles',tDisp],['Réservés',tRes],['Vendus',tSold]]}),
+    statCardHTML({ico:'⌂', big:biens, lbl:'Biens immobiliers', bar:[{v:bVente,c:G},{v:bLoc,c:Y}], split:[['Vente',bVente],['Location',bLoc]]}),
+    statCardHTML({ico:'▤', big:albums, lbl:'Albums médias', split:[['Photos',photos],['Vidéos',videos]]}),
+    statCardHTML({ico:'◍', big:team, lbl:"Membres d'équipe"}),
+    statCardHTML({ico:'☎', big:rAll, lbl:'Demandes clients', bar:[{v:rNew,c:Y},{v:rProg,c:'#2f6f8f'},{v:rDone,c:G}], split:[['Nouveau',rNew],['En cours',rProg],['Traité',rDone]]}),
+    statCardHTML({ico:'✉', big:unread, lbl:'Messages non lus', gold:true}),
+    statCardHTML({ico:'✎', big:nPub, lbl:'Actualités publiées', split:[['Brouillons',nDraft]]}),
+  ].join('');
+  const t = $('#statTime'); if(t) t.textContent = 'Actualisé à ' + new Date().toLocaleTimeString('fr-FR');
+}
+async function adminOverview(main){
   main.innerHTML = `
-    <h2 style="margin-bottom:10px;">Tableau de bord</h2>
-    <p style="margin-bottom:30px;">${DEMO_MODE ? "⚠ Supabase n'est pas encore configuré — les chiffres ci-dessous sont des données de démonstration." : "Vue d'ensemble de l'activité du site."}</p>
-    <div class="kpi-row">
-      <div class="kpi"><div class="n">${team.length}</div><div class="l">Membres d'équipe</div></div>
-      <div class="kpi"><div class="n">${albums.length}</div><div class="l">Albums médias</div></div>
-      <div class="kpi"><div class="n">${unread}</div><div class="l">Messages non lus</div></div>
-      <div class="kpi"><div class="n">${pending}</div><div class="l">Demandes en attente</div></div>
+    <div class="admin-toolbar">
+      <h2 style="margin:0;">Tableau de bord</h2>
+      <div style="display:flex; gap:12px; align-items:center;">
+        <span id="statTime" style="font-family:var(--font-mono); font-size:.72rem; color:#7c8874;"></span>
+        <button class="btn btn-outline btn-sm" onclick="loadStats()">↻ Actualiser</button>
+      </div>
     </div>
+    <div class="stat-grid" id="statGrid"><div class="spinner" style="grid-column:1/-1;"></div></div>
     <div class="admin-panel">
       <h2>Accès rapide</h2>
       <div style="display:flex; gap:14px; flex-wrap:wrap;">
-        <a href="#/admin/dashboard/team" class="btn btn-outline btn-sm">Gérer l'équipe</a>
-        <a href="#/admin/dashboard/albums" class="btn btn-outline btn-sm">Gérer les albums</a>
-        <a href="#/admin/dashboard/messages" class="btn btn-outline btn-sm">Voir les messages</a>
-        <a href="#/admin/dashboard/requests" class="btn btn-outline btn-sm">Voir les demandes</a>
-        <a href="#/admin/dashboard/stats" class="btn btn-outline btn-sm">Modifier les chiffres clés</a>
+        <a href="#/admin/dashboard/team" class="btn btn-outline btn-sm">Équipe &amp; organigramme</a>
+        <a href="#/admin/dashboard/terrains" class="btn btn-outline btn-sm">Terrains</a>
+        <a href="#/admin/dashboard/biens" class="btn btn-outline btn-sm">Biens immobiliers</a>
+        <a href="#/admin/dashboard/albums" class="btn btn-outline btn-sm">Albums</a>
+        <a href="#/admin/dashboard/actualites" class="btn btn-outline btn-sm">Actualités</a>
+        <a href="#/admin/dashboard/requests" class="btn btn-outline btn-sm">Demandes</a>
+        <a href="#/admin/dashboard/messages" class="btn btn-outline btn-sm">Messages</a>
       </div>
     </div>`;
+  await loadStats();
+  clearInterval(window._statsTimer);
+  window._statsTimer = setInterval(loadStats, 30000);   // rafraîchissement automatique toutes les 30 s
 }
 
 /* ---------------- Gestion de l'équipe ---------------- */
 async function adminTeam(main){
   const team = await sbSelect('team', {order:{col:'name'}});
+  window._teamCache = team;
   main.innerHTML = `
     <div class="admin-toolbar">
       <h2 style="margin:0;">Équipe (${team.length})</h2>
       <button class="btn btn-primary btn-sm" id="addTeamBtn">+ Ajouter un membre</button>
     </div>
     <div class="admin-panel">
-      ${team.length ? `<table class="data-table"><thead><tr><th></th><th>Nom</th><th>Poste</th><th>Département</th><th></th></tr></thead>
+      ${team.length ? `<table class="data-table"><thead><tr><th></th><th>Nom</th><th>Poste</th><th>Département</th><th>Supérieur</th><th></th></tr></thead>
       <tbody>${team.map(m=>`
         <tr>
           <td><img class="thumb-sm" src="${esc(m.photo_url||'')}"></td>
-          <td>${esc(m.name)}</td><td>${esc(m.position)}</td><td>${esc(m.department||'—')}</td>
+          <td>${esc(m.name)}</td><td>${esc(m.position)}</td><td>${esc(m.department||'—')}</td><td>${esc((team.find(x=>x.id===m.superieur_id)||{}).name||'—')}</td>
           <td class="row-actions">
             <button class="icon-btn" onclick="openTeamModal('${m.id}')">✎</button>
             <button class="icon-btn" onclick="deleteRow('team','${m.id}', ()=>adminTeam($('#adminMain')))">🗑</button>
@@ -1614,24 +1888,34 @@ function teamFormHTML(){
     <div class="field"><label>Photo</label><input type="file" id="teamPhotoFile" accept="image/*"></div>
     <div class="field"><label>Nom complet *</label><input id="teamName" required></div>
     <div class="field"><label>Poste *</label><input id="teamPosition" required></div>
-    <div class="field"><label>Département *</label><input id="teamDepartment" required></div>
+    <div class="field"><label>Département *</label><input id="teamDepartment" list="deptList" required>
+      <datalist id="deptList">${[...DOMAINS.map(d=>d.name),'Direction','Direction des Opérations','Administration','Finance et Comptabilité','Communication et Marketing'].map(n=>`<option value="${esc(n)}">`).join('')}</datalist></div>
+    <div class="field"><label>Poste hiérarchique (ex : Directeur Général)</label><input id="teamPosteH"></div>
+    <div class="field"><label>Supérieur hiérarchique</label>
+      <select id="teamSup"><option value="">— Aucun (sommet de l'organigramme) —</option></select></div>
   `;
 }
+function teamDescendants(id, list){
+  const out = new Set([id]); let grew = true;
+  while(grew){ grew = false; list.forEach(m=>{ if(m.superieur_id && out.has(m.superieur_id) && !out.has(m.id)){ out.add(m.id); grew = true; } }); }
+  return out;
+}
 function openTeamModal(id){
-  const modal = $('#teamModal');
-  modal.classList.add('open');
+  $('#teamModal').classList.add('open');
   $('#teamId').value = id || '';
-  $('#teamName').value = ''; $('#teamPosition').value=''; $('#teamDepartment').value='';
-  if(id){
-    sbSelect('team', {eq:{id}}).then(r=>{
-      const m = r[0]; if(!m) return;
-      $('#teamName').value=m.name; $('#teamPosition').value=m.position; $('#teamDepartment').value=m.department||'';
-    });
-  }
+  const list = window._teamCache || [];
+  const m = id ? list.find(x=>x.id===id) : null;
+  $('#teamName').value = m?.name || ''; $('#teamPosition').value = m?.position || '';
+  $('#teamDepartment').value = m?.department || ''; $('#teamPosteH').value = m?.poste_hierarchique || '';
+  $('#teamPhotoFile').value = '';
+  const banned = id ? teamDescendants(id, list) : new Set();   // évite qu'un membre devienne son propre supérieur (boucle)
+  $('#teamSup').innerHTML = `<option value="">— Aucun (sommet de l'organigramme) —</option>` +
+    list.filter(x=>!banned.has(x.id)).map(x=>`<option value="${esc(x.id)}" ${m?.superieur_id===x.id?'selected':''}>${esc(x.name)}${x.position ? ' — '+esc(x.position) : ''}</option>`).join('');
 }
 async function submitTeamForm(){
   const id = $('#teamId').value;
-  const payload = { name:$('#teamName').value.trim(), position:$('#teamPosition').value.trim(), department:$('#teamDepartment').value.trim() };
+  const payload = { name:$('#teamName').value.trim(), position:$('#teamPosition').value.trim(), department:$('#teamDepartment').value.trim(),
+    poste_hierarchique:$('#teamPosteH').value.trim() || null, superieur_id:$('#teamSup').value || null };
   const file = $('#teamPhotoFile').files[0];
   try{
     if(file){
@@ -1649,7 +1933,7 @@ async function submitTeamForm(){
     closeModal('teamModal');
     adminTeam($('#adminMain'));
   }catch(err){
-    toast("Action impossible : connexion Supabase non configurée.");
+    toast('Action impossible : ' + (err.message || 'erreur'));
   }
 }
 
@@ -2049,6 +2333,96 @@ async function genererLoyers(){
   }catch(err){ toast('Action impossible : '+(err.message||'erreur')); }
 }
 
+/* =========================================================================
+   ADMIN — ACTUALITÉS (éditeur simple + image de couverture + brouillon/publié)
+   ========================================================================= */
+const NEWS_STATUS = { brouillon:'Brouillon', publie:'Publié' };
+async function adminActualites(main){
+  const rows = await sbSelect('actualites', {order:{col:'published_at', asc:false}});
+  window._actuCache = rows;
+  main.innerHTML = `
+    <div class="admin-toolbar">
+      <h2 style="margin:0;">Actualités (${rows.length})</h2>
+      <button class="btn btn-primary btn-sm" onclick="openActuModal()">+ Nouvelle actualité</button>
+    </div>
+    <div class="admin-panel">
+      ${rows.length ? `<table class="data-table"><thead><tr><th></th><th>Titre</th><th>Date</th><th>Statut</th><th></th></tr></thead>
+      <tbody>${rows.map(a=>`
+        <tr>
+          <td><img class="thumb-sm" src="${esc(a.cover_url||'')}" loading="lazy"></td>
+          <td>${esc(a.title)}</td><td>${fmtDate(a.published_at)}</td>
+          <td><span class="badge ${a.status==='publie'?'done':'pending'}">${NEWS_STATUS[a.status]||a.status}</span></td>
+          <td class="row-actions">
+            <button class="btn btn-outline btn-sm" onclick="quickStatus('actualites','${a.id}','${a.status==='publie'?'brouillon':'publie'}',()=>adminActualites($('#adminMain')))">${a.status==='publie'?'Dépublier':'Publier'}</button>
+            <button class="icon-btn" onclick="openActuModal('${a.id}')">✎</button>
+            <button class="icon-btn" onclick="deleteRow('actualites','${a.id}', ()=>adminActualites($('#adminMain')))">🗑</button>
+          </td>
+        </tr>`).join('')}</tbody></table>` : emptyStateHTML('Aucune actualité. Rédigez la première.')}
+    </div>
+    ${modalShellHTML('actuModal', 'Actualité', `
+      <input type="hidden" id="actuId">
+      <div class="field"><label>Titre *</label><input id="actuTitle" required></div>
+      <div class="field-row">
+        <div class="field"><label>Statut</label><select id="actuStatus">${optionsHTML(NEWS_STATUS,'brouillon')}</select></div>
+        <div class="field"><label>Date de publication</label><input type="date" id="actuDate"></div>
+      </div>
+      <div class="field"><label>Image de couverture</label><input type="file" id="actuCover" accept="image/*"></div>
+      <div class="field"><label>Contenu</label>
+        <div class="rte-bar" onmousedown="event.preventDefault()">
+          <button type="button" title="Gras" onclick="rteCmd('bold')"><b>B</b></button>
+          <button type="button" title="Italique" onclick="rteCmd('italic')"><i>I</i></button>
+          <button type="button" title="Titre" onclick="rteCmd('formatBlock','h2')">H</button>
+          <button type="button" title="Liste à puces" onclick="rteCmd('insertUnorderedList')">• Liste</button>
+          <button type="button" title="Liste numérotée" onclick="rteCmd('insertOrderedList')">1. Liste</button>
+          <button type="button" title="Lien" onclick="rteLink()">Lien</button>
+          <button type="button" title="Retirer la mise en forme" onclick="rteCmd('removeFormat')">⌫</button>
+        </div>
+        <div class="rte-area" id="actuEditor" contenteditable="true"></div></div>
+      <div style="margin-bottom:14px;"><button type="button" class="btn btn-outline btn-sm" onclick="submitActuForm('brouillon')">Enregistrer en brouillon</button></div>`)}
+  `;
+}
+function rteCmd(cmd, val){ $('#actuEditor').focus(); document.execCommand(cmd, false, val || null); }
+function rteLink(){
+  const url = prompt('Adresse du lien (https://…)');
+  if(url) rteCmd('createLink', url);
+}
+function openActuModal(id){
+  const m = $('#actuModal'); m.classList.add('open');
+  $('#actuModal .modal-box').style.maxWidth = '760px';
+  const a = id ? (window._actuCache||[]).find(x=>x.id===id) : null;
+  $('#actuId').value = id || '';
+  $('#actuTitle').value = a?.title || '';
+  $('#actuStatus').value = a?.status || 'brouillon';
+  $('#actuDate').value = (a?.published_at || new Date().toISOString()).slice(0,10);
+  $('#actuCover').value = '';
+  $('#actuEditor').innerHTML = sanitizeHTML(a?.content || '');
+  const ed = $('#actuEditor');
+  if(!ed._pasteBound){   // collage en texte brut pour garder un contenu propre
+    ed.addEventListener('paste', e=>{ e.preventDefault(); document.execCommand('insertText', false, (e.clipboardData||window.clipboardData).getData('text/plain')); });
+    ed._pasteBound = true;
+  }
+}
+async function submitActuForm(forceStatus){
+  const id = $('#actuId').value;
+  const title = $('#actuTitle').value.trim();
+  if(!title){ toast('Le titre est obligatoire.'); return; }
+  const d = $('#actuDate').value;
+  const payload = {
+    title,
+    content: sanitizeHTML($('#actuEditor').innerHTML),
+    status: (typeof forceStatus === 'string') ? forceStatus : $('#actuStatus').value,
+    published_at: d ? new Date(d + 'T09:00:00').toISOString() : new Date().toISOString(),
+  };
+  try{
+    const f = $('#actuCover').files[0];
+    if(f) payload.cover_url = await uploadToBucket('media', 'actualites', f);
+    const { error } = id ? await sb.from('actualites').update(payload).eq('id', id) : await sb.from('actualites').insert(payload);
+    if(error) throw error;
+    toast(payload.status === 'publie' ? 'Actualité publiée.' : 'Brouillon enregistré.');
+    closeModal('actuModal'); adminActualites($('#adminMain'));
+  }catch(err){ toast('Action impossible : ' + (err.message || 'erreur')); }
+}
+
 /* ---------------- Gestion des terrains ---------------- */
 const ENTITY_MEDIA = {
   terrain:{table:'terrain_media', fk:'terrain_id', folder:'terrains'},
@@ -2329,7 +2703,7 @@ async function submitStatForm(){
 
 /* ---------------- Helpers admin génériques ---------------- */
 function modalShellHTML(id, title, formHTML, isMediaModal, isViewOnly){
-  const submitFn = {teamModal:'submitTeamForm', albumModal:'submitAlbumForm', statModal:'submitStatForm', terrainModal:'submitTerrainForm', bienModal:'submitBienForm'}[id];
+  const submitFn = {teamModal:'submitTeamForm', albumModal:'submitAlbumForm', statModal:'submitStatForm', terrainModal:'submitTerrainForm', bienModal:'submitBienForm', actuModal:'submitActuForm'}[id];
   return `
   <div class="modal-overlay" id="${id}">
     <div class="modal-box">
